@@ -1,0 +1,10 @@
+version: "3.1"
+services:
+  api:
+    container_name: villa-amelia-app
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: villa-amelia-docker
+    ports:
+      - 8080:8080
