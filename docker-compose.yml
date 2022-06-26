@@ -5,3 +5,16 @@ services:
     image: villa-amelia-docker
     ports:
       - 8080:8080
+  db:
+    build: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: villa-amelia
+    image: db
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+volumes:
+  postgresql-data:
