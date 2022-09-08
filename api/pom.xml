@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
-    <artifactId>villa-amelia-app</artifactId>
+    <artifactId>iTender</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>villa-amelia-app</name>
-    <description>villa-amelia-app</description>
+    <name>iTender</name>
+    <description>iTender</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
