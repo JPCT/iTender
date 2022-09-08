@@ -2,15 +2,15 @@ version: "3.1"
 services:
   api:
     build: api
-    image: villa-amelia-docker
+    image: itender-docker
     ports:
       - 8080:8080
   db:
-    container_name: villa-amelia-db 
+    container_name: itender-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: villa-amelia
+      POSTGRES_DB: itender
     build: db
     ports:
       - 5432:5432

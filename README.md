@@ -1,4 +1,4 @@
-# Villa Amelia App
+# iTender app
 Application for Villa Amelia Business
 
 
