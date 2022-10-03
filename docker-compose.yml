@@ -1,20 +1,26 @@
 version: "3.1"
 services:
-  api:
-    build: api
-    image: itender-docker
-    ports:
-      - 8080:8080
   db:
-    container_name: itender-db
+    build:
+      context: db
+    image: itender/db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: itender
-    build: db
     ports:
-      - 5432:5432
+      - 25432:5432
     volumes:
       - postgresql-data:/var/lib/postgresql/data
+  api:
+    build:
+      context: api
+    image: itender/api
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   postgresql-data:
