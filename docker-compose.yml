@@ -1,13 +1,17 @@
 version: "3.1"
 services:
+
   db:
     build:
       context: db
-    image: itender/db
+    image: postgres
+    restart: always
+
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: itender
+
     ports:
       - 25432:5432
     volumes:
@@ -15,12 +19,25 @@ services:
   api:
     build:
       context: api
-    image: itender/api
     ports:
       - 8080:8080
     depends_on:
       - db
+    environment:
+      - spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER
+      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+      - spring.jpa.hibernate.ddl-auto=update
+      - spring.datasource.url=jdbc:postgresql://db:5432/itender
+      - spring.datasource.username=postgres
+      - spring.datasource.password=1234
+      - spring.datasource.driver.class=com.postgres.jdbc.Driver
+      - spring.jpa.show-sql=true
+      - spring.jpa.properties.hibernate.format_sql=true
+      - spring.sql.init.mode=always
+      - spring.datasource.initialize=true
+      - springdoc.show.actuator=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
 volumes:
   postgresql-data:
