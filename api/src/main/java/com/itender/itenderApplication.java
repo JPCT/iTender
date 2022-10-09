@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.itender.model.Role;
 import com.itender.model.User;
@@ -20,11 +22,16 @@ import io.swagger.v3.oas.models.info.Info;
 
 @SpringBootApplication
 @Configuration
-@EntityScan(basePackageClasses = { iTenderApplication.class, Jsr310JpaConverters.class })
-public class iTenderApplication {
+@EntityScan(basePackageClasses = { itenderApplication.class, Jsr310JpaConverters.class })
+public class itenderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(iTenderApplication.class, args);
+        SpringApplication.run(itenderApplication.class, args);
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
