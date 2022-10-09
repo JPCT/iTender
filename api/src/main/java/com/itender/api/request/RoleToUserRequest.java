@@ -1,4 +1,4 @@
-package com.iTender.api.request;
+package com.itender.api.request;
 
 import lombok.Data;
 

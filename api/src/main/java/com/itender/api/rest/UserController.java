@@ -1,4 +1,4 @@
-package com.iTender.api.rest;
+package com.itender.api.rest;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iTender.api.request.RoleToUserRequest;
-import com.iTender.model.Role;
-import com.iTender.model.User;
-import com.iTender.service.UserService;
+import com.itender.api.request.RoleToUserRequest;
+import com.itender.model.Role;
+import com.itender.model.User;
+import com.itender.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

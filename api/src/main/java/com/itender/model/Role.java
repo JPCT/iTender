@@ -1,4 +1,4 @@
-package com.iTender.model;
+package com.itender.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

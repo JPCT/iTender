@@ -1,4 +1,4 @@
-package com.iTender;
+package com.itender;
 
 import java.util.ArrayList;
 
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-import com.iTender.model.Role;
-import com.iTender.model.User;
-import com.iTender.service.UserService;
+import com.itender.model.Role;
+import com.itender.model.User;
+import com.itender.service.UserService;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -44,8 +44,8 @@ public class iTenderApplication {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().components(new Components())
-                .info(new Info().title("iTender application")
-                        .description("iTender application")
+                .info(new Info().title("itender application")
+                        .description("itender application")
                         .version("1.0"));
     }
 }

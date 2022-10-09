@@ -1,4 +1,4 @@
-package com.iTender.service.impl;
+package com.itender.service.impl;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.iTender.model.Role;
-import com.iTender.model.User;
-import com.iTender.repository.RoleRepository;
-import com.iTender.repository.UserRepository;
-import com.iTender.service.UserService;
+import com.itender.model.Role;
+import com.itender.model.User;
+import com.itender.repository.RoleRepository;
+import com.itender.repository.UserRepository;
+import com.itender.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 

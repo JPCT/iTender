@@ -1,9 +1,9 @@
-package com.iTender.repository;
+package com.itender.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.iTender.model.User;
+import com.itender.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

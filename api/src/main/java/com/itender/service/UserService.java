@@ -1,9 +1,9 @@
-package com.iTender.service;
+package com.itender.service;
 
 import java.util.List;
 
-import com.iTender.model.Role;
-import com.iTender.model.User;
+import com.itender.model.Role;
+import com.itender.model.User;
 
 public interface UserService {
 
