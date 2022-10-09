@@ -9,11 +9,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.itender.model.Role;
-import com.itender.model.User;
+import com.itender.model.UserApp;
 import com.itender.service.UserService;
 
 import io.swagger.v3.oas.models.Components;
@@ -36,7 +34,7 @@ public class itenderApplication {
                 userService.saveRole(new Role(null, "ROLE_USER"));
                 userService.saveRole(new Role(null, "ROLE_MANAGER"));
 
-                userService.saveUser(new User(null, "John", "john@email.com", "1234", new ArrayList<>()));
+                userService.saveUser(new UserApp(null, "John", "john@email.com", "1234", new ArrayList<>()));
 
                 userService.addRoleToUser("john@email.com", "ROLE_USER");
             }
