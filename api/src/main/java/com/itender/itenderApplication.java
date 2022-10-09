@@ -30,11 +30,6 @@ public class itenderApplication {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     CommandLineRunner run(UserService userService){
         return args -> {
             if (userService.getUsers().isEmpty()) {
