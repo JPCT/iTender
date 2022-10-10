@@ -1,6 +1,11 @@
 package com.itender.api.rest;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.security.auth.login.LoginException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itender.api.request.RoleToUserRequest;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
+import com.itender.security.SecurityConfig;
 import com.itender.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -30,10 +36,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class UserController {
 
     private final UserService userService;
+    private final SecurityConfig securityConfig;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, SecurityConfig securityConfig) {
         this.userService = userService;
+        this.securityConfig = securityConfig;
     }
 
     @Operation(summary = "Retrieve all users")
@@ -45,7 +53,7 @@ public class UserController {
                     )
             }
     )
-    @GetMapping("/users")
+    @GetMapping("/user/all")
     public ResponseEntity<List<UserApp>> getUsers() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
@@ -91,6 +99,22 @@ public class UserController {
     public ResponseEntity<Void> addRoleToUser(@RequestBody RoleToUserRequest request) {
         userService.addRoleToUser(request.getUsername(), request.getRoleName());
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @Operation(summary = "Refresh access token")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Token refreshed."),
+                    @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
+                    )
+            }
+    )
+    @GetMapping("/token/refresh")
+    public void refreshToken(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, LoginException {
+
+        securityConfig.refreshToken(request, response);
     }
 
 }
