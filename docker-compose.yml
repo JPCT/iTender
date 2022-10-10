@@ -31,11 +31,11 @@ services:
       - spring.datasource.username=postgres
       - spring.datasource.password=1234
       - spring.datasource.driver.class=com.postgres.jdbc.Driver
-      - spring.jpa.show-sql=true
       - spring.jpa.properties.hibernate.format_sql=true
       - spring.sql.init.mode=always
       - spring.datasource.initialize=true
       - springdoc.show.actuator=true
+      - JWT_SECRET=rWBYr(P3Ye&7Z!m7
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 

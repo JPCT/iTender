@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,9 +34,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
 
+    private final Environment environment;
+
+    public CustomAuthorizationFilter(Environment environment) {
+        this.environment = environment;
+    }
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        String jwtSecret = environment.getProperty("JWT_SECRET");
+
+        if (Objects.isNull(jwtSecret)) {
+            log.error("No JWT secret was found");
+            throw new SecurityException("No JWT secret was found");
+        }
+
         if (request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/token/refresh")) {
             filterChain.doFilter(request, response);
         } else {
@@ -42,8 +57,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
                 try {
                     String token = authorizationHeader.substring("Bearer ".length());
-                    Algorithm algorithm = Algorithm.HMAC256(
-                            "secret".getBytes()); //TODO Put secret on database configuration
+                    Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
                     JWTVerifier verifier = JWT.require(algorithm).build();
                     DecodedJWT decodedJWT = verifier.verify(token);
                     String username = decodedJWT.getSubject();
