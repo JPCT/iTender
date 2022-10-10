@@ -1,5 +1,7 @@
 package com.itender;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.boot.CommandLineRunner;
@@ -36,13 +38,19 @@ public class itenderApplication {
     }
 
     @Bean
+    public Clock clock() {
+        return Clock.systemDefaultZone();
+    }
+
+    @Bean
     CommandLineRunner run(UserService userService){
         return args -> {
             if (userService.getUsers().isEmpty()) {
-                userService.saveRole(new Role(null, "ROLE_USER"));
-                userService.saveRole(new Role(null, "ROLE_MANAGER"));
+                userService.saveRole(new Role(null, "ROLE_USER", LocalDateTime.now(), LocalDateTime.now()));
+                userService.saveRole(new Role(null, "ROLE_MANAGER", LocalDateTime.now(), LocalDateTime.now()));
 
-                userService.saveUser(new UserApp(null, "John", "john@email.com", "1234", new ArrayList<>()));
+                userService.saveUser(new UserApp(null, "John", "john@email.com", "1234", new ArrayList<>(), null,
+                        LocalDateTime.now(), LocalDateTime.now()));
 
                 userService.addRoleToUser("john@email.com", "ROLE_USER");
             }

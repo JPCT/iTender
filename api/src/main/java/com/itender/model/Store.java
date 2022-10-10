@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
