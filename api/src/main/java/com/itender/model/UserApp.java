@@ -1,4 +1,4 @@
-package com.iTender.model;
+package com.itender.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-public class User {
+public class UserApp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

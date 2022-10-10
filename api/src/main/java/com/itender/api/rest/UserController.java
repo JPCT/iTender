@@ -1,4 +1,4 @@
-package com.iTender.api.rest;
+package com.itender.api.rest;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iTender.api.request.RoleToUserRequest;
-import com.iTender.model.Role;
-import com.iTender.model.User;
-import com.iTender.service.UserService;
+import com.itender.api.request.RoleToUserRequest;
+import com.itender.model.Role;
+import com.itender.model.UserApp;
+import com.itender.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @CrossOrigin(origins = "*", maxAge = 86400)
 @RestController
 @RequestMapping("/api")
-@Tag(name = "User controller", description = "All users actions")
+@Tag(name = "UserApp controller", description = "All users actions")
 public class UserController {
 
     private final UserService userService;
@@ -46,22 +46,22 @@ public class UserController {
             }
     )
     @GetMapping("/users")
-    public ResponseEntity<List<User>> getUsers() {
+    public ResponseEntity<List<UserApp>> getUsers() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
-    @Operation(summary = "Create a user")
+    @Operation(summary = "Create a userApp")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "201", description = "User created."),
+                    @ApiResponse(responseCode = "201", description = "UserApp created."),
                     @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
                     @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
                     )
             }
     )
     @PostMapping("/user/save")
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    public ResponseEntity<UserApp> saveUser(@RequestBody UserApp userApp) {
+        return new ResponseEntity<>(userService.saveUser(userApp), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Create a role")

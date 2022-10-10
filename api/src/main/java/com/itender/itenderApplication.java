@@ -1,4 +1,4 @@
-package com.iTender;
+package com.itender;
 
 import java.util.ArrayList;
 
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
-import com.iTender.model.Role;
-import com.iTender.model.User;
-import com.iTender.service.UserService;
+import com.itender.model.Role;
+import com.itender.model.UserApp;
+import com.itender.service.UserService;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -20,11 +20,11 @@ import io.swagger.v3.oas.models.info.Info;
 
 @SpringBootApplication
 @Configuration
-@EntityScan(basePackageClasses = { iTenderApplication.class, Jsr310JpaConverters.class })
-public class iTenderApplication {
+@EntityScan(basePackageClasses = { itenderApplication.class, Jsr310JpaConverters.class })
+public class itenderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(iTenderApplication.class, args);
+        SpringApplication.run(itenderApplication.class, args);
     }
 
     @Bean
@@ -34,7 +34,7 @@ public class iTenderApplication {
                 userService.saveRole(new Role(null, "ROLE_USER"));
                 userService.saveRole(new Role(null, "ROLE_MANAGER"));
 
-                userService.saveUser(new User(null, "John", "john@email.com", "1234", new ArrayList<>()));
+                userService.saveUser(new UserApp(null, "John", "john@email.com", "1234", new ArrayList<>()));
 
                 userService.addRoleToUser("john@email.com", "ROLE_USER");
             }
@@ -44,8 +44,8 @@ public class iTenderApplication {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().components(new Components())
-                .info(new Info().title("iTender application")
-                        .description("iTender application")
+                .info(new Info().title("itender application")
+                        .description("itender application")
                         .version("1.0"));
     }
 }
