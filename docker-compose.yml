@@ -36,6 +36,7 @@ services:
       - spring.datasource.initialize=true
       - springdoc.show.actuator=true
       - JWT_SECRET=rWBYr(P3Ye&7Z!m7
+      - springdoc.api-docs.path=/itender-openapi
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
