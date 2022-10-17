@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.itender.model.Role;
 import com.itender.model.UserApp;
@@ -56,4 +57,10 @@ public class itenderApplication {
                         .description("itender application")
                         .version("1.0"));
     }
+
+    @Bean
+    public InternalResourceViewResolver defaultViewResolver() {
+        return new InternalResourceViewResolver();
+    }
+
 }
