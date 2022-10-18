@@ -14,8 +14,7 @@ services:
 
     ports:
       - 25432:5432
-    volumes:
-      - postgresql-data:/var/lib/postgresql/data
+
   api:
     build:
       context: api
@@ -36,8 +35,17 @@ services:
       - spring.datasource.initialize=true
       - springdoc.show.actuator=true
       - JWT_SECRET=rWBYr(P3Ye&7Z!m7
+      - springdoc.api-docs.path=/itender-openapi
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  angular-service:
+    container_name: iTenderAngular
+    build: 
+      context: ./front
+      dockerfile: ./Dockerfile
+    ports: 
+      - "4200:80"
 
 volumes:
   postgresql-data:
