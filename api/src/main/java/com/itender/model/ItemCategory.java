@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class ItemCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,21 +25,8 @@ public class Product {
     @Column
     private String name;
 
-    @Column
-    private Long price;
-
-    @Column
-    private String description;
-
-    @Column
-    private String imageUrl;
-
     @ManyToOne
-    @JoinColumn(name = "product_category_id", nullable = false)
-    private ProductCategory productCategory;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id", nullable = false)
+    @JoinColumn(name = "store_id")
     private Store store;
 
 }
