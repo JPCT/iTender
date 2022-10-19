@@ -1,5 +1,7 @@
 package com.itender;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
 import com.itender.service.UserService;
+import com.itender.utils.Sex;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -37,15 +40,22 @@ public class itenderApplication {
     }
 
     @Bean
+    public Clock clock() {
+        return Clock.systemDefaultZone();
+    }
+
+    @Bean
     CommandLineRunner run(UserService userService){
         return args -> {
             if (userService.getUsers().isEmpty()) {
-                userService.saveRole(new Role(null, "ROLE_USER"));
-                userService.saveRole(new Role(null, "ROLE_MANAGER"));
+                userService.saveRole(new Role(null, "ROLE_ADMIN", LocalDateTime.now(), LocalDateTime.now()));
+                userService.saveRole(new Role(null, "ROLE_WAITER", LocalDateTime.now(), LocalDateTime.now()));
 
-                userService.saveUser(new UserApp(null, "John", "john@email.com", "1234", new ArrayList<>()));
+                userService.saveUser(
+                        new UserApp(null, "John", "Mejia", "3134554632", Sex.MALE, "john@email.com",
+                                "1234", new ArrayList<>(), null, LocalDateTime.now(), LocalDateTime.now()));
 
-                userService.addRoleToUser("john@email.com", "ROLE_USER");
+                userService.addRoleToUser("john@email.com", "ROLE_ADMIN");
             }
         };
     }

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +27,13 @@ public class Role {
     @Column(unique = true, nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String description;
+
+    @Column
+    private String logoUrl;
+
     @CreatedDate
     private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    private LocalDateTime updateAt;
 
 }
