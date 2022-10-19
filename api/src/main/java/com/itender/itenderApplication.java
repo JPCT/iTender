@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
 import com.itender.service.UserService;
-import com.itender.utils.Gender;
+import com.itender.utils.Sex;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -52,7 +52,7 @@ public class itenderApplication {
                 userService.saveRole(new Role(null, "ROLE_WAITER", LocalDateTime.now(), LocalDateTime.now()));
 
                 userService.saveUser(
-                        new UserApp(null, "John", "Mejia", "3134554632", Gender.MALE, "john@email.com",
+                        new UserApp(null, "John", "Mejia", "3134554632", Sex.MALE, "john@email.com",
                                 "1234", new ArrayList<>(), null, LocalDateTime.now(), LocalDateTime.now()));
 
                 userService.addRoleToUser("john@email.com", "ROLE_ADMIN");

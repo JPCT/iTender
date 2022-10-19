@@ -1,6 +1,6 @@
 package com.itender.utils;
 
-public enum Gender {
+public enum Sex {
     MALE,
     FEMALE
 }

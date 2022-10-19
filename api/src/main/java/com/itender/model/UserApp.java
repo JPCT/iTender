@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.itender.utils.Gender;
+import com.itender.utils.Sex;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,7 +43,7 @@ public class UserApp {
     private String phoneNumber;
 
     @Column(nullable = false)
-    private Gender gender;
+    private Sex sex;
 
     @Column(unique = true, nullable = false)
     private String username;
