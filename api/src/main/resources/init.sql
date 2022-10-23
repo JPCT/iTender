@@ -175,21 +175,59 @@ INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
 VALUES(16, 'Vino', 25000, 20, 2, 5, 8, 4);
 
+--Insert into table role--
+INSERT INTO "role"
+(id, created_at, name, update_at)
+VALUES(1, '2022-10-20 21:10:28.355', 'ROLE_SUPER_ADMIN', '2022-10-20 21:10:28.355');
+INSERT INTO "role"
+(id, created_at, name, update_at)
+VALUES(2, '2022-10-20 21:10:28.584', 'ROLE_WAITER', '2022-10-20 21:10:28.584');
+INSERT INTO "role"
+(id, created_at, name, update_at)
+VALUES(3, '2022-10-22 21:10:28.584', 'ROLE_COMMERCE_ADMIN', '2022-10-22 21:10:28.584');
+INSERT INTO "role"
+(id, created_at, name, update_at)
+VALUES(4, '2022-10-22 21:10:28.584', 'ROLE_CASHIER', '2022-10-22 21:10:28.584');
+
 --Insert into table user_app--
+INSERT INTO user_app
+(id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
+VALUES(3, '2022-10-20 21:10:28.590', 'John', 'Mejia', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3134554632', 0, '2022-10-20 21:10:28.590', 'john@email.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
 VALUES(2, '2022-10-19 23:41:14.350', 'Lucas', 'Bohorquez', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3pm', '3016120490', 0, '2022-10-20 23:41:14.350', 'lucas@email.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
 VALUES(1, '2022-10-19 23:41:14.350', 'Pablo', 'Castaño', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3lm', '3136367416', 0, '2022-10-20 23:41:14.350', 'pablo@email.com', NULL);
+INSERT INTO user_app
+(id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
+VALUES(4, '2022-10-22 23:41:14.350', 'Daniel', 'Alejandro', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3as', '3214216598', 0, '2022-10-22 23:41:14.350', 'daniel@gmail.com', NULL);
+INSERT INTO user_app
+(id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
+VALUES(5, '2022-10-23 23:41:14.350', 'Daniela', 'Lopez', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3jq', '3118558254', 1, '2022-10-23 23:41:14.350', 'daniela@gmail.com', NULL);
 
 --Insert into table user_app_roles--
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
-VALUES(2, 2);
+SELECT 3, 1
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 3 AND roles_id = 1);
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
-VALUES(1, 2);
+SELECT 2, 2
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 2 AND roles_id = 2);
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
+SELECT 1, 2
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 1 AND roles_id = 2);
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
+SELECT 4, 4
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 4 AND roles_id = 4);
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
+SELECT 5, 3
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 5 AND roles_id = 3);
+
 
 --Insert into table order_app--
 INSERT INTO order_app
