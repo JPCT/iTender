@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Collections;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -31,24 +32,23 @@ public class FileManagerImpl implements FileManager {
 
     @Override
     public String uploadFile(MultipartFile file) throws FileException {
+        if (file == null || StringUtils.isEmpty(file.getOriginalFilename())) {
+            throw new FileException("No file was provided to upload.", HttpStatus.BAD_REQUEST);
+        }
         try {
-            if (file != null) {
-                log.info("Uploading file {}", file.getOriginalFilename());
-                File fileMetadata = new File();
-                fileMetadata.setParents(Collections.singletonList(null));
-                fileMetadata.setName(file.getOriginalFilename());
-                File uploadFile = googleDriveManager.getInstance()
-                        .files()
-                        .create(fileMetadata, new InputStreamContent(
-                                file.getContentType(),
-                                new ByteArrayInputStream(file.getBytes()))
-                        )
-                        .setFields("id").execute();
-                log.info("File successfully uploaded with id {}", uploadFile.getId());
-                return uploadFile.getId();
-            } else {
-                return "Select file";
-            }
+            log.info("Uploading file {}", file.getOriginalFilename());
+            File fileMetadata = new File();
+            fileMetadata.setParents(Collections.singletonList(null));
+            fileMetadata.setName(file.getOriginalFilename());
+            File uploadFile = googleDriveManager.getInstance()
+                    .files()
+                    .create(fileMetadata, new InputStreamContent(
+                            file.getContentType(),
+                            new ByteArrayInputStream(file.getBytes()))
+                    )
+                    .setFields("id").execute();
+            log.info("File successfully uploaded with id {}", uploadFile.getId());
+            return uploadFile.getId();
         } catch (Exception e) {
             log.error("Error: ", e);
             throw new FileException("Failed uploading file " + file.getOriginalFilename(), e);

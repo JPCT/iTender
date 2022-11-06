@@ -67,8 +67,8 @@ public class StoreController {
                     )
             }
     )
-    @PutMapping
-    public ResponseEntity<Void> updateStore(@NotNull @PathVariable Long id, @NotNull @RequestBody StoreRequest request)
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateStore(@NotNull @PathVariable Long id, @NotNull @ModelAttribute StoreRequest request)
             throws FileException, StoreException {
         storeService.updateStore(id, request);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -85,7 +85,7 @@ public class StoreController {
                     )
             }
     )
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStore(@NotNull @PathVariable Long id) throws StoreException {
         storeService.deleteStore(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
