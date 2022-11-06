@@ -45,22 +45,6 @@ public class itenderApplication {
     }
 
     @Bean
-    CommandLineRunner run(UserService userService){
-        return args -> {
-            if (userService.getUsers().isEmpty()) {
-                userService.saveRole(new Role(null, "ROLE_ADMIN", LocalDateTime.now(), LocalDateTime.now()));
-                userService.saveRole(new Role(null, "ROLE_WAITER", LocalDateTime.now(), LocalDateTime.now()));
-
-                userService.saveUser(
-                        new UserApp(null, "John", "Mejia", "3134554632", Sex.MALE, "john@email.com",
-                                "1234", new ArrayList<>(), null, LocalDateTime.now(), LocalDateTime.now()));
-
-                userService.addRoleToUser("john@email.com", "ROLE_ADMIN");
-            }
-        };
-    }
-
-    @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI().components(new Components())
                 .info(new Info().title("itender application")
