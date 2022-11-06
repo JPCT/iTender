@@ -31,7 +31,7 @@ public class Store {
     private String description;
 
     @Column
-    private String logoUrl;
+    private String logoImageId;
 
     @CreatedDate
     private LocalDateTime createdAt;

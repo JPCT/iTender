@@ -1,6 +1,6 @@
 package com.itender.exception;
 
-public class FileException extends Exception {
+public class FileException extends ITenderException {
 
     public FileException(String message) {
         super(message);
