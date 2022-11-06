@@ -6,3 +6,6 @@ Application for Villa Amelia Business
 
 ### Docker Compose
 `docker-compose up --build`
+
+### Swagger URL
+http://localhost:8080/api/swagger-ui.html

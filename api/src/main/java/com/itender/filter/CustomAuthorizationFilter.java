@@ -50,7 +50,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
             throw new SecurityException("No JWT secret was found");
         }
 
-        if (request.getServletPath().equals("/api/login") || request.getServletPath().equals("/api/token/refresh")) {
+        if (request.getServletPath().equals("/login") || request.getServletPath().equals("/token/refresh")) {
             filterChain.doFilter(request, response);
         } else {
             String authorizationHeader = request.getHeader(AUTHORIZATION);

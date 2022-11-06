@@ -32,7 +32,7 @@ public class Product {
     private String description;
 
     @Column
-    private String imageUrl;
+    private String imageId;
 
     @ManyToOne
     @JoinColumn(name = "product_category_id", nullable = false)

@@ -31,7 +31,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @CrossOrigin(origins = "*", maxAge = 86400)
 @RestController
-@RequestMapping("/api")
 @Tag(name = "UserApp controller", description = "All users actions")
 public class UserController {
 

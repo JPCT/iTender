@@ -42,16 +42,16 @@ VALUES(13, '2022-10-19 00:00:00.000', 'Mesa 13');
 
 --Insert into table store--
 INSERT INTO store
-(id, created_at, description, logo_url, "name")
+(id, created_at, description, logo_image_id, "name")
 VALUES(1, '2022-10-19 00:00:00.000', 'Se vende cafe, helado, tortas', NULL, 'Cafe Bambu');
 INSERT INTO store
-(id, created_at, description, logo_url, "name")
+(id, created_at, description, logo_image_id, "name")
 VALUES(2, '2022-10-19 00:00:00.000', 'Se venden almuerzos y desayunos', NULL, 'Restaurante de Gloria');
 INSERT INTO store
-(id, created_at, description, logo_url, "name")
+(id, created_at, description, logo_image_id, "name")
 VALUES(3, '2022-10-19 00:00:00.000', 'Se vende comida rapida', NULL, 'Donde Lucas');
 INSERT INTO store
-(id, created_at, description, logo_url, "name")
+(id, created_at, description, logo_image_id, "name")
 VALUES(4, '2022-10-19 00:00:00.000', 'Se venden licores', NULL, 'Estanquillo Tinoco');
 
 --Insert into table item_category--
@@ -101,28 +101,28 @@ VALUES(5, 'Comida rapida', 3);
 
 --Insert into table product--
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(1, 'Bebida fuerte hecha a base de cafe', NULL, 'Expreso', 2000, 1, 1);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(2, 'Bebida suave hecha a base de cafe', NULL, 'Americano', 2500, 1, 1);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(3, 'Arroz con frijoles, un huevo entero, una porcion de aguacate, tajadas de platano', NULL, 'Bandeja paisa', 12000, 2, 2);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(4, 'Arepa con queso y chocolate', NULL, 'Desayuno con arepa', 10000, 3, 2);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(5, 'Lentejas con arroz', NULL, 'Lentejas con arroz', 11000, 2, 2);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(6, 'Bebida a base de cafe con leche', NULL, 'Mocaccino', 4000, 1, 1);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(7, 'Helado con brownie', NULL, 'Helado con brownie', 10000, 5, 3);
 INSERT INTO product
-(id, description, image_url, "name", price, product_category_id, store_id)
+(id, description, image_id, "name", price, product_category_id, store_id)
 VALUES(8, 'Botella de vino', NULL, 'Botella de vino', 25000, 4, 4);
 
 --Insert into table item--

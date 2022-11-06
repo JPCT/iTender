@@ -1,8 +1,10 @@
 package com.itender.security;
 
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpMethod.DELETE;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
@@ -64,12 +66,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(
                 authenticationManagerBean(), environment);
-        customAuthenticationFilter.setFilterProcessesUrl("/api/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
-        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/api/role/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/user/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/role/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
+        http.authorizeRequests().antMatchers(PUT, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
+        http.authorizeRequests().antMatchers(DELETE, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(environment), UsernamePasswordAuthenticationFilter.class);
