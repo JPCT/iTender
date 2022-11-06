@@ -1,5 +1,9 @@
 package com.itender.api.rest;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +12,16 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itender.api.request.StoreRequest;
+import com.itender.api.response.GetStoreResponse;
 import com.itender.exception.FileException;
 import com.itender.exception.StoreException;
 import com.itender.service.StoreService;
@@ -89,6 +94,23 @@ public class StoreController {
     public ResponseEntity<Void> deleteStore(@NotNull @PathVariable Long id) throws StoreException {
         storeService.deleteStore(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Operation(summary = "Get all stores")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Stores retrieved."),
+                    @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
+                    @ApiResponse(responseCode = "403", description = "Access denied.", content = @Content),
+                    @ApiResponse(responseCode = "404", description = "Stores not found.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
+                    )
+            }
+    )
+    @GetMapping("/all")
+    public ResponseEntity<List<GetStoreResponse>> getAllStores()
+            throws FileException, GeneralSecurityException, IOException, StoreException {
+        return new ResponseEntity<>(storeService.getAllStores(), HttpStatus.OK);
     }
 
 }

@@ -43,16 +43,16 @@ VALUES(13, '2022-10-19 00:00:00.000', 'Mesa 13');
 --Insert into table store--
 INSERT INTO store
 (id, created_at, description, logo_image_id, "name")
-VALUES(1, '2022-10-19 00:00:00.000', 'Se vende cafe, helado, tortas', NULL, 'Cafe Bambu');
+VALUES(1, '2022-10-19 00:00:00.000', 'Se vende cafe, helado, tortas', '1ERlhXoqgNEJUMsFuvEV-LivNlqRxtoVs', 'Cafe Bambu');
 INSERT INTO store
 (id, created_at, description, logo_image_id, "name")
-VALUES(2, '2022-10-19 00:00:00.000', 'Se venden almuerzos y desayunos', NULL, 'Restaurante de Gloria');
+VALUES(2, '2022-10-19 00:00:00.000', 'Se venden almuerzos y desayunos', '15kOqPHyd7h3uHEj5c2TTguc07tIjnIfe', 'Restaurante de Gloria');
 INSERT INTO store
 (id, created_at, description, logo_image_id, "name")
-VALUES(3, '2022-10-19 00:00:00.000', 'Se vende comida rapida', NULL, 'Donde Lucas');
+VALUES(3, '2022-10-19 00:00:00.000', 'Se vende comida rapida', '1Fzza_1EzJ2DwYrR-XheSaMwEFnWYrllo', 'Donde Lucas');
 INSERT INTO store
 (id, created_at, description, logo_image_id, "name")
-VALUES(4, '2022-10-19 00:00:00.000', 'Se venden licores', NULL, 'Estanquillo Tinoco');
+VALUES(4, '2022-10-19 00:00:00.000', 'Se venden licores', '1O_OwdRwNfxCghBbI4sIIXlS1U7VGh3hg', 'Estanquillo Tinoco');
 
 --Insert into table item_category--
 INSERT INTO item_category
@@ -195,16 +195,16 @@ INSERT INTO user_app
 VALUES(3, '2022-10-20 21:10:28.590', 'John', 'Mejia', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3134554632', 0, '2022-10-20 21:10:28.590', 'john@email.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
-VALUES(2, '2022-10-19 23:41:14.350', 'Lucas', 'Bohorquez', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3pm', '3016120490', 0, '2022-10-20 23:41:14.350', 'lucas@email.com', NULL);
+VALUES(2, '2022-10-19 23:41:14.350', 'Lucas', 'Bohorquez', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3016120490', 0, '2022-10-20 23:41:14.350', 'lucas@email.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
-VALUES(1, '2022-10-19 23:41:14.350', 'Pablo', 'Castaño', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3lm', '3136367416', 0, '2022-10-20 23:41:14.350', 'pablo@email.com', NULL);
+VALUES(1, '2022-10-19 23:41:14.350', 'Pablo', 'Castaño', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3136367416', 0, '2022-10-20 23:41:14.350', 'pablo@email.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
-VALUES(4, '2022-10-22 23:41:14.350', 'Daniel', 'Alejandro', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3as', '3214216598', 0, '2022-10-22 23:41:14.350', 'daniel@gmail.com', NULL);
+VALUES(4, '2022-10-22 23:41:14.350', 'Daniel', 'Alejandro', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3214216598', 0, '2022-10-22 23:41:14.350', 'daniel@gmail.com', NULL);
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
-VALUES(5, '2022-10-23 23:41:14.350', 'Daniela', 'Lopez', '$2a$10$uUESbtRXmOsD4x.atWkwtOKBYZlxWH2KMpgC3D8xYbmF25NfCP3jq', '3118558254', 1, '2022-10-23 23:41:14.350', 'daniela@gmail.com', NULL);
+VALUES(5, '2022-10-23 23:41:14.350', 'Daniela', 'Lopez', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3118558254', 1, '2022-10-23 23:41:14.350', 'daniela@gmail.com', NULL);
 
 --Insert into table user_app_roles--
 INSERT INTO user_app_roles

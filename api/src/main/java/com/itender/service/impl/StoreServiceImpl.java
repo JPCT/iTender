@@ -1,7 +1,11 @@
 package com.itender.service.impl;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -10,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.itender.api.request.StoreRequest;
+import com.itender.api.response.GetStoreResponse;
 import com.itender.exception.FileException;
 import com.itender.exception.StoreException;
 import com.itender.model.Store;
@@ -82,6 +87,25 @@ public class StoreServiceImpl implements StoreService {
             storeRepository.deleteById(id);
         } else {
             throw new StoreException("Store with id " + id + " not exists.", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    public List<GetStoreResponse> getAllStores()
+            throws StoreException, FileException, GeneralSecurityException, IOException {
+        List<Store> stores = storeRepository.findAll();
+
+        if (!stores.isEmpty()) {
+            List<GetStoreResponse> getStoreResponses = new ArrayList<>();
+            for (Store store : stores) {
+                GetStoreResponse getStoreResponse = mapper.map(store, GetStoreResponse.class);
+                getStoreResponse.setLogoUrl(fileManager.getUrl(store.getLogoImageId()));
+                getStoreResponses.add(getStoreResponse);
+            }
+
+            return getStoreResponses;
+        } else {
+            throw new StoreException("Any store was found.", HttpStatus.NOT_FOUND);
         }
     }
 
