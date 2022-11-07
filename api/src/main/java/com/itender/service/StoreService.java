@@ -3,6 +3,7 @@ package com.itender.service;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
+import java.util.UUID;
 
 import com.itender.api.request.StoreRequest;
 import com.itender.api.response.GetStoreResponse;
@@ -11,11 +12,11 @@ import com.itender.exception.StoreException;
 
 public interface StoreService {
 
-    Long createStore(StoreRequest request) throws FileException, StoreException;
+    UUID createStore(StoreRequest request) throws FileException, StoreException;
 
-    void updateStore(Long id, StoreRequest request) throws FileException, StoreException;
+    void updateStore(UUID id, StoreRequest request) throws FileException, StoreException;
 
-    void deleteStore(Long id) throws StoreException;
+    void deleteStore(UUID id) throws StoreException;
 
     List<GetStoreResponse> getAllStores() throws StoreException, FileException, GeneralSecurityException, IOException;
 }
