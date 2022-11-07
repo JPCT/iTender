@@ -57,123 +57,123 @@ VALUES('7b35ce7c-b72c-4107-88e0-4c31870afeea', '2022-10-19 00:00:00.000', 'Se ve
 --Insert into table item_category--
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', 'Grano', 2);
+VALUES('1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', 'Grano', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('b151f9a6-bed0-4bb7-87dc-f33cfbc83c96', 'Verdura', 2);
+VALUES('b151f9a6-bed0-4bb7-87dc-f33cfbc83c96', 'Verdura', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('2ffdfaa1-f813-4ce1-8ef7-e1784a75471e', 'Fruta', 2);
+VALUES('2ffdfaa1-f813-4ce1-8ef7-e1784a75471e', 'Fruta', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('aa2d6dbd-2ad8-441d-b6a9-d2e8fd54cf0d', 'Tuberculo', 2);
+VALUES('aa2d6dbd-2ad8-441d-b6a9-d2e8fd54cf0d', 'Tuberculo', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('8ecb6f48-6f1b-4ffc-b074-1dfceb423577', 'Licor', 4);
+VALUES('8ecb6f48-6f1b-4ffc-b074-1dfceb423577', 'Licor', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('072fbc1f-d6d7-449f-a1f3-47b6e8d11a50', 'Lacteo', 3);
+VALUES('072fbc1f-d6d7-449f-a1f3-47b6e8d11a50', 'Lacteo', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('854497ab-c566-40b9-b8d6-0cef8c68194f', 'Proveniente de un animal', 2);
+VALUES('854497ab-c566-40b9-b8d6-0cef8c68194f', 'Proveniente de un animal', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item_category
 (id, "name", store_id)
-VALUES('c14da1c5-ebb3-49be-b7cd-0ff72c8598b7', 'Harina', 2);
+VALUES('c14da1c5-ebb3-49be-b7cd-0ff72c8598b7', 'Harina', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 
 
 
 --Insert into table product_category--
 INSERT INTO product_category
 (id, category_name, store_id)
-VALUES('d27bc3e1-4c12-412d-aeaf-7b9311491465', 'Bebidas', 1);
+VALUES('d27bc3e1-4c12-412d-aeaf-7b9311491465', 'Bebidas', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product_category
 (id, category_name, store_id)
-VALUES('c5aa79f7-0e25-4c55-9353-2f09e016c488', 'Almuerzo', 2);
+VALUES('c5aa79f7-0e25-4c55-9353-2f09e016c488', 'Almuerzo', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product_category
 (id, category_name, store_id)
-VALUES('cb17f0b6-6701-4ae4-8561-453b876ddce4', 'Desayuno', 2);
+VALUES('cb17f0b6-6701-4ae4-8561-453b876ddce4', 'Desayuno', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product_category
 (id, category_name, store_id)
-VALUES('f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', 'Licor', 4);
+VALUES('f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', 'Licor', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
 INSERT INTO product_category
 (id, category_name, store_id)
-VALUES('f08f8488-6ad0-409d-a31e-aef5c2570c8f', 'Comida rapida', 3);
+VALUES('f08f8488-6ad0-409d-a31e-aef5c2570c8f', 'Comida rapida', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 
 --Insert into table product--
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('7b8fedca-585f-4e9f-8f51-367588294c3d', 'Bebida fuerte hecha a base de cafe', NULL, 'Expreso', 2000, 1, 1);
+VALUES('7b8fedca-585f-4e9f-8f51-367588294c3d', 'Bebida fuerte hecha a base de cafe', NULL, 'Expreso', 2000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('41e02205-9b85-4159-aad9-c0771618ba44', 'Bebida suave hecha a base de cafe', NULL, 'Americano', 2500, 1, 1);
+VALUES('41e02205-9b85-4159-aad9-c0771618ba44', 'Bebida suave hecha a base de cafe', NULL, 'Americano', 2500, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'Arroz con frijoles, un huevo entero, una porcion de aguacate, tajadas de platano', NULL, 'Bandeja paisa', 12000, 2, 2);
+VALUES('7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'Arroz con frijoles, un huevo entero, una porcion de aguacate, tajadas de platano', NULL, 'Bandeja paisa', 12000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'Arepa con queso y chocolate', NULL, 'Desayuno con arepa', 10000, 3, 2);
+VALUES('19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'Arepa con queso y chocolate', NULL, 'Desayuno con arepa', 10000, 'cb17f0b6-6701-4ae4-8561-453b876ddce4', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('e987fa78-a219-46de-8974-9691c9c78a83', 'Lentejas con arroz', NULL, 'Lentejas con arroz', 11000, 2, 2);
+VALUES('e987fa78-a219-46de-8974-9691c9c78a83', 'Lentejas con arroz', NULL, 'Lentejas con arroz', 11000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('9df66b2f-f887-4422-a452-06d6073e08fe', 'Bebida a base de cafe con leche', NULL, 'Mocaccino', 4000, 1, 1);
+VALUES('9df66b2f-f887-4422-a452-06d6073e08fe', 'Bebida a base de cafe con leche', NULL, 'Mocaccino', 4000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('b8509e0c-e272-4310-9705-1b3ccc987b23', 'Helado con brownie', NULL, 'Helado con brownie', 10000, 5, 3);
+VALUES('b8509e0c-e272-4310-9705-1b3ccc987b23', 'Helado con brownie', NULL, 'Helado con brownie', 10000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('5b31fbf8-f9af-4be4-bc62-87df28cf66c3', 'Botella de vino', NULL, 'Botella de vino', 25000, 4, 4);
+VALUES('5b31fbf8-f9af-4be4-bc62-87df28cf66c3', 'Botella de vino', NULL, 'Botella de vino', 25000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
 
 --Insert into table item--
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('0dca977a-fee3-4b0f-9b92-4ef6db639b61', 'Huevo', 250, 50, 2, 7, 3, 2);
+VALUES('0dca977a-fee3-4b0f-9b92-4ef6db639b61', 'Huevo', 250, 50, 2, '854497ab-c566-40b9-b8d6-0cef8c68194f', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('0055b3d7-d784-4183-be4d-caf157c984b2', 'Arroz', 2390, 10, 0, 1, 3, 2);
+VALUES('0055b3d7-d784-4183-be4d-caf157c984b2', 'Arroz', 2390, 10, 0, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('827e2bd6-bb26-48ac-824a-4651ca0ce55f', 'Cafe', 23000, 20, 1, 1, 1, 1);
+VALUES('827e2bd6-bb26-48ac-824a-4651ca0ce55f', 'Cafe', 23000, 20, 1, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '7b8fedca-585f-4e9f-8f51-367588294c3d', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('8c4bb4a9-ad47-44cc-99af-680efde322d3', 'Frijoles', 2000, 20, 0, 1, 3, 2);
+VALUES('8c4bb4a9-ad47-44cc-99af-680efde322d3', 'Frijoles', 2000, 20, 0, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('26ed0a2a-e677-4d01-81c2-1fc03e0fd706', 'Lentejas', 1900, 25, 0, 1, 5, 2);
+VALUES('26ed0a2a-e677-4d01-81c2-1fc03e0fd706', 'Lentejas', 1900, 25, 0, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', 'e987fa78-a219-46de-8974-9691c9c78a83', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('addaac7f-10ea-4243-973e-bd6d109f2bb8', 'Azucar', 2400, 25, 1, 1, 2, 1);
+VALUES('addaac7f-10ea-4243-973e-bd6d109f2bb8', 'Azucar', 2400, 25, 1, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '41e02205-9b85-4159-aad9-c0771618ba44', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('d4a65cc4-b339-445b-a623-3f186583138b', 'Sal', 2250, 23, 0, 1, 3, 2);
+VALUES('d4a65cc4-b339-445b-a623-3f186583138b', 'Sal', 2250, 23, 0, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('f54eb0c9-e819-4deb-8033-f2fd5ec86f1c', 'Arepa', 2000, 15, 2, 8, 4, 2);
+VALUES('f54eb0c9-e819-4deb-8033-f2fd5ec86f1c', 'Arepa', 2000, 15, 2, 'c14da1c5-ebb3-49be-b7cd-0ff72c8598b7', '19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('f2934fac-d802-439a-9cd8-383645afbca1', 'Queso', 7000, 40, 2, 6, 4, 2);
+VALUES('f2934fac-d802-439a-9cd8-383645afbca1', 'Queso', 7000, 40, 2, '072fbc1f-d6d7-449f-a1f3-47b6e8d11a50', '19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('80183a58-1746-49b9-95e8-f9269000ff8a', 'Panela', 5000, 15, 2, 1, 4, 2);
+VALUES('80183a58-1746-49b9-95e8-f9269000ff8a', 'Panela', 5000, 15, 2, '1cddce2f-bbb4-4c38-a3cc-515c8dd27eed', '19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('ee50bd1c-8d09-4351-9539-006647b3160a', 'Papa', 6000, 20, 1, 4, 5, 2);
+VALUES('ee50bd1c-8d09-4351-9539-006647b3160a', 'Papa', 6000, 20, 1, 'aa2d6dbd-2ad8-441d-b6a9-d2e8fd54cf0d', 'e987fa78-a219-46de-8974-9691c9c78a83', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('23ff09b6-87dc-48ef-890f-1f98bcb14e5f', 'Leche', 2500, 30, 2, 6, 6, 1);
+VALUES('23ff09b6-87dc-48ef-890f-1f98bcb14e5f', 'Leche', 2500, 30, 2, '072fbc1f-d6d7-449f-a1f3-47b6e8d11a50', '9df66b2f-f887-4422-a452-06d6073e08fe', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('dc22cfd9-5571-44f1-b039-a9404f3f7ffe', 'Helado', 10000, 20, 1, 6, 7, 3);
+VALUES('dc22cfd9-5571-44f1-b039-a9404f3f7ffe', 'Helado', 10000, 20, 1, '072fbc1f-d6d7-449f-a1f3-47b6e8d11a50', 'b8509e0c-e272-4310-9705-1b3ccc987b23', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('9e9f6d81-4058-4cf5-ba04-6b32bd1671b0', 'Platano', 600, 30, 2, 2, 3, 2);
+VALUES('9e9f6d81-4058-4cf5-ba04-6b32bd1671b0', 'Platano', 600, 30, 2, 'b151f9a6-bed0-4bb7-87dc-f33cfbc83c96', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('9af7cc88-2aa0-48ec-970d-b221afe2f586', 'Aguacate', 2000, 35, 2, 3, 3, 2);
+VALUES('9af7cc88-2aa0-48ec-970d-b221afe2f586', 'Aguacate', 2000, 35, 2, '2ffdfaa1-f813-4ce1-8ef7-e1784a75471e', '7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO item
 (id, "name", price, stock, unit_measurement, item_category_id, product_id, store_id)
-VALUES('789ec13d-36f5-4110-b772-12e16dc35d2a', 'Vino', 25000, 20, 2, 5, 8, 4);
+VALUES('789ec13d-36f5-4110-b772-12e16dc35d2a', 'Vino', 25000, 20, 2, '8ecb6f48-6f1b-4ffc-b074-1dfceb423577', '5b31fbf8-f9af-4be4-bc62-87df28cf66c3', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
 
 --Insert into table role--
 INSERT INTO "role"
