@@ -210,23 +210,23 @@ VALUES('eecbee25-49bf-4b8e-9e0c-5ab3d2c7ea39', '2022-10-23 23:41:14.350', 'Danie
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
 SELECT 'd3f5f669-4409-4673-b404-5afc294c51fa', '0353f568-6f13-4068-b40d-9845798fa0e4'
-WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 3 AND roles_id = 1);
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'd3f5f669-4409-4673-b404-5afc294c51fa' AND roles_id = '0353f568-6f13-4068-b40d-9845798fa0e4');
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
 SELECT 'c2aa163a-2fc2-4c82-aa02-d33d59fb30a5', '6e1b4703-ed4c-4cfd-ad72-2f7639131d68'
-WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 2 AND roles_id = 2);
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'c2aa163a-2fc2-4c82-aa02-d33d59fb30a5' AND roles_id = '6e1b4703-ed4c-4cfd-ad72-2f7639131d68');
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
 SELECT '4c6962ab-1844-4444-8443-6f87aaa32090', '6e1b4703-ed4c-4cfd-ad72-2f7639131d68'
-WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 1 AND roles_id = 2);
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = '4c6962ab-1844-4444-8443-6f87aaa32090' AND roles_id = '6e1b4703-ed4c-4cfd-ad72-2f7639131d68');
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
 SELECT 'bc02a37d-bbe8-4d2c-924b-8c1f569b182e', '74b8c157-0775-4e0d-87a4-325d4c6a3523'
-WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 4 AND roles_id = 4);
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'bc02a37d-bbe8-4d2c-924b-8c1f569b182e' AND roles_id = '74b8c157-0775-4e0d-87a4-325d4c6a3523');
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
 SELECT 'eecbee25-49bf-4b8e-9e0c-5ab3d2c7ea39', '53c50b05-7770-4995-8fa8-5e732c181d25'
-WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 5 AND roles_id = 3);
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'eecbee25-49bf-4b8e-9e0c-5ab3d2c7ea39' AND roles_id = '53c50b05-7770-4995-8fa8-5e732c181d25');
 
 
 --Insert into table order_app--
