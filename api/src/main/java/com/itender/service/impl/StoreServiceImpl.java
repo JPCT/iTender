@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public Long createStore(StoreRequest request) throws FileException, StoreException {
+    public UUID createStore(StoreRequest request) throws FileException, StoreException {
         if (!storeRepository.findByName(request.getName()).isPresent()) {
             String fileId = fileManager.uploadFile(request.getLogoImage());
 
@@ -61,7 +62,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public void updateStore(Long id, StoreRequest request) throws FileException, StoreException {
+    public void updateStore(UUID id, StoreRequest request) throws FileException, StoreException {
         Optional<Store> optionalStore = storeRepository.findById(id);
 
         if (optionalStore.isPresent()) {
@@ -78,7 +79,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public void deleteStore(Long id) throws StoreException {
+    public void deleteStore(UUID id) throws StoreException {
         Optional<Store> optionalStore = storeRepository.findById(id);
 
         if (optionalStore.isPresent()) {

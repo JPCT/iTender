@@ -3,6 +3,7 @@ package com.itender.api.rest;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
@@ -56,7 +57,7 @@ public class StoreController {
             }
     )
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Long> createStore(@NotNull @ModelAttribute StoreRequest request)
+    public ResponseEntity<UUID> createStore(@NotNull @ModelAttribute StoreRequest request)
             throws FileException, StoreException {
         return new ResponseEntity<>(storeService.createStore(request), HttpStatus.CREATED);
     }
@@ -73,7 +74,7 @@ public class StoreController {
             }
     )
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateStore(@NotNull @PathVariable Long id, @NotNull @ModelAttribute StoreRequest request)
+    public ResponseEntity<Void> updateStore(@NotNull @PathVariable UUID id, @NotNull @ModelAttribute StoreRequest request)
             throws FileException, StoreException {
         storeService.updateStore(id, request);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -91,7 +92,7 @@ public class StoreController {
             }
     )
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStore(@NotNull @PathVariable Long id) throws StoreException {
+    public ResponseEntity<Void> deleteStore(@NotNull @PathVariable UUID id) throws StoreException {
         storeService.deleteStore(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
