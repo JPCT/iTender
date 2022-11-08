@@ -86,7 +86,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
             return productCategoryResponses;
         } else {
-            throw new ProductCategoryException("Any product category was found with store id " + storeId + " .",
+            throw new ProductCategoryException("Any product category was not found with store id " + storeId + " .",
                     HttpStatus.NOT_FOUND);
         }
     }
