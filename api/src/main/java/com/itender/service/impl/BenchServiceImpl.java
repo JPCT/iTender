@@ -3,6 +3,7 @@ package com.itender.service.impl;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class BenchServiceImpl implements BenchService {
     }
 
     @Override
-    public Long createBench(BenchRequest request) throws BenchException {
+    public UUID createBench(BenchRequest request) throws BenchException {
         if (!benchRepository.findByTableName(request.getTableName()).isPresent()) {
 
             Bench bench = mapper.map(request, Bench.class);
@@ -50,7 +51,7 @@ public class BenchServiceImpl implements BenchService {
     }
 
     @Override
-    public void deleteBench(Long id) throws BenchException {
+    public void deleteBench(UUID id) throws BenchException {
         Optional<Bench> optionalBench = benchRepository.findById(id);
 
         if (optionalBench.isPresent()) {

@@ -1,5 +1,7 @@
 package com.itender.api.rest;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +49,8 @@ public class BenchController {
                     )
             }
     )
-    @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
-    public ResponseEntity<Long> createBench(@NotNull @ModelAttribute BenchRequest request)
+    @PostMapping
+    public ResponseEntity<UUID> createBench(@NotNull @ModelAttribute BenchRequest request)
             throws BenchException {
         return new ResponseEntity<>(benchService.createBench(request), HttpStatus.CREATED);
     }
@@ -65,7 +67,7 @@ public class BenchController {
             }
     )
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBench(@NotNull @PathVariable Long id) throws BenchException {
+    public ResponseEntity<Void> deleteBench(@NotNull @PathVariable UUID id) throws BenchException {
         benchService.deleteBench(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
