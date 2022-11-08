@@ -75,10 +75,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(POST, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
         http.authorizeRequests().antMatchers(DELETE, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/item/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(GET, "/item/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(PUT, "/item/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(DELETE, "/item/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(POST, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(GET, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(PUT, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
+        http.authorizeRequests().antMatchers(DELETE, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(environment), UsernamePasswordAuthenticationFilter.class);
