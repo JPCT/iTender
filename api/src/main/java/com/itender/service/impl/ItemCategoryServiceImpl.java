@@ -83,7 +83,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 
             return itemCategoryResponses;
         } else {
-            throw new ItemCategoryException("Any item category was found with store id " + storeId + " .",
+            throw new ItemCategoryException("Any item category was not found with store id " + storeId + " .",
                     HttpStatus.NOT_FOUND);
         }
     }
