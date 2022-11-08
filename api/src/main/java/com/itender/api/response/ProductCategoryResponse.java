@@ -11,14 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetStoreResponse {
+public class ProductCategoryResponse {
 
     private UUID id;
 
-    private String name;
+    private String categoryName;
 
-    private String description;
-
-    private String logoUrl;
+    private UUID storeId;
 
 }
