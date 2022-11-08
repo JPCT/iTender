@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @CrossOrigin(origins = "*", maxAge = 86400)
 @RestController
-@RequestMapping("/product/category")
+@RequestMapping("/category/product")
 @Tag(name = "Product category controller", description = "Product category actions")
 public class ProductCategoryController {
 

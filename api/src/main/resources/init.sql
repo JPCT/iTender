@@ -213,6 +213,18 @@ SELECT 'd3f5f669-4409-4673-b404-5afc294c51fa', '0353f568-6f13-4068-b40d-9845798f
 WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'd3f5f669-4409-4673-b404-5afc294c51fa' AND roles_id = '0353f568-6f13-4068-b40d-9845798fa0e4');
 INSERT INTO user_app_roles
 (user_app_id, roles_id)
+SELECT 'd3f5f669-4409-4673-b404-5afc294c51fa', '6e1b4703-ed4c-4cfd-ad72-2f7639131d68'
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'd3f5f669-4409-4673-b404-5afc294c51fa' AND roles_id = '6e1b4703-ed4c-4cfd-ad72-2f7639131d68');
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
+SELECT 'd3f5f669-4409-4673-b404-5afc294c51fa', '74b8c157-0775-4e0d-87a4-325d4c6a3523'
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'd3f5f669-4409-4673-b404-5afc294c51fa' AND roles_id = '74b8c157-0775-4e0d-87a4-325d4c6a3523');
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
+SELECT 'd3f5f669-4409-4673-b404-5afc294c51fa', '53c50b05-7770-4995-8fa8-5e732c181d25'
+WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'd3f5f669-4409-4673-b404-5afc294c51fa' AND roles_id = '53c50b05-7770-4995-8fa8-5e732c181d25');
+INSERT INTO user_app_roles
+(user_app_id, roles_id)
 SELECT 'c2aa163a-2fc2-4c82-aa02-d33d59fb30a5', '6e1b4703-ed4c-4cfd-ad72-2f7639131d68'
 WHERE NOT EXISTS (SELECT user_app_id, roles_id FROM user_app_roles WHERE user_app_id = 'c2aa163a-2fc2-4c82-aa02-d33d59fb30a5' AND roles_id = '6e1b4703-ed4c-4cfd-ad72-2f7639131d68');
 INSERT INTO user_app_roles
