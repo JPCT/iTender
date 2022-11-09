@@ -24,7 +24,7 @@ public class Bench {
     @GeneratedValue
     private UUID id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private String tableName;
 
     @CreatedDate
