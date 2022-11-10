@@ -70,12 +70,12 @@ public class BenchServiceImpl implements BenchService {
     public List<BenchResponse> getAllBenchs() throws BenchException {
         List<Bench> benchList = benchRepository.findAll();
 
-        if(!benchList.isEmpty()){
+        if (!benchList.isEmpty()) {
             List<BenchResponse> benchResponseList;
             benchResponseList = benchList.stream()
                     .map(bench ->
-                        mapper.map(bench, BenchResponse.class)
-            ).collect(Collectors.toList());
+                            mapper.map(bench, BenchResponse.class)
+                    ).collect(Collectors.toList());
 
             return benchResponseList;
         } else {
