@@ -1,5 +1,6 @@
 package com.itender.api.rest;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itender.api.request.BenchRequest;
+import com.itender.api.response.BenchResponse;
 import com.itender.exception.BenchException;
 import com.itender.service.BenchService;
 
@@ -69,6 +72,23 @@ public class BenchController {
     public ResponseEntity<Void> deleteBench(@NotNull @PathVariable UUID id) throws BenchException {
         benchService.deleteBench(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Operation(summary = "Get all benchs")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Benchs retrieved."),
+                    @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
+                    @ApiResponse(responseCode = "403", description = "Access denied.", content = @Content),
+                    @ApiResponse(responseCode = "404", description = "Benchs not found.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
+                    )
+            }
+    )
+    @GetMapping("/all")
+    public ResponseEntity<List<BenchResponse>> getAllBenchs()
+            throws BenchException {
+        return new ResponseEntity<>(benchService.getAllBenchs(), HttpStatus.OK);
     }
 
 }
