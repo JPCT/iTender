@@ -69,7 +69,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         customAuthenticationFilter.setFilterProcessesUrl("/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/user/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/role/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
@@ -81,6 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(DELETE, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
         http.authorizeRequests().antMatchers(POST, "/bench/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
         http.authorizeRequests().antMatchers(DELETE, "/bench/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
+        http.authorizeRequests().antMatchers("/store/all", "/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(environment), UsernamePasswordAuthenticationFilter.class);
