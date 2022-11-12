@@ -35,6 +35,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
     @Override
     public UUID createItemCategory(ItemCategoryRequest request) {
         ItemCategory itemCategory = mapper.map(request, ItemCategory.class);
+        itemCategory.setId(null);
         log.info("Creating product category {}", itemCategory.getName());
 
         itemCategoryRepository.save(itemCategory);

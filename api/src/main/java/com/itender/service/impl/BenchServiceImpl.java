@@ -49,6 +49,7 @@ public class BenchServiceImpl implements BenchService {
 
             Bench bench = mapper.map(request, Bench.class);
             bench.setCreatedAt(LocalDateTime.now(clock));
+            bench.setId(null);
             log.info("Creating bench {}", bench.getTableName());
 
             benchRepository.save(bench);

@@ -23,7 +23,7 @@ public class Product {
     @GeneratedValue
     private UUID id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
     @Column

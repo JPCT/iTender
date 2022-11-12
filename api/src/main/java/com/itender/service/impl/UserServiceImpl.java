@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         request.setPassword(passwordEncoder.encode(request.getPassword()));
 
         UserApp userApp = mapper.map(request, UserApp.class);
+        userApp.setId(null);
         userApp.setCreatedAt(LocalDateTime.now(clock));
         userApp.setUpdateAt(LocalDateTime.now(clock));
 

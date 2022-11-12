@@ -102,28 +102,28 @@ VALUES('f08f8488-6ad0-409d-a31e-aef5c2570c8f', 'Comida rapida', '003c18c1-1f67-4
 --Insert into table product--
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('7b8fedca-585f-4e9f-8f51-367588294c3d', 'Bebida fuerte hecha a base de cafe', NULL, 'Expreso', 2000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
+VALUES('7b8fedca-585f-4e9f-8f51-367588294c3d', 'Bebida fuerte hecha a base de cafe', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Expreso', 2000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('41e02205-9b85-4159-aad9-c0771618ba44', 'Bebida suave hecha a base de cafe', NULL, 'Americano', 2500, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
+VALUES('41e02205-9b85-4159-aad9-c0771618ba44', 'Bebida suave hecha a base de cafe', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Americano', 2500, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'Arroz con frijoles, un huevo entero, una porcion de aguacate, tajadas de platano', NULL, 'Bandeja paisa', 12000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
+VALUES('7f4f0b6b-a746-47a9-9fa8-4a8edc4ef8d2', 'Arroz con frijoles, un huevo entero, una porcion de aguacate, tajadas de platano', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Bandeja paisa', 12000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'Arepa con queso y chocolate', NULL, 'Desayuno con arepa', 10000, 'cb17f0b6-6701-4ae4-8561-453b876ddce4', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
+VALUES('19c298db-eb1c-452e-b9f3-c6903f84ddaf', 'Arepa con queso y chocolate', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Desayuno con arepa', 10000, 'cb17f0b6-6701-4ae4-8561-453b876ddce4', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('e987fa78-a219-46de-8974-9691c9c78a83', 'Lentejas con arroz', NULL, 'Lentejas con arroz', 11000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
+VALUES('e987fa78-a219-46de-8974-9691c9c78a83', 'Lentejas con arroz', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Lentejas con arroz', 11000, 'c5aa79f7-0e25-4c55-9353-2f09e016c488', 'd3c863c0-20be-4037-8d0c-fafd9091ff49');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('9df66b2f-f887-4422-a452-06d6073e08fe', 'Bebida a base de cafe con leche', NULL, 'Mocaccino', 4000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
+VALUES('9df66b2f-f887-4422-a452-06d6073e08fe', 'Bebida a base de cafe con leche', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Mocaccino', 4000, 'd27bc3e1-4c12-412d-aeaf-7b9311491465', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('b8509e0c-e272-4310-9705-1b3ccc987b23', 'Helado con brownie', NULL, 'Helado con brownie', 10000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '003c18c1-1f67-4dd1-a053-9568075ff90a');
+VALUES('b8509e0c-e272-4310-9705-1b3ccc987b23', 'Helado con brownie', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Helado con brownie', 10000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
-VALUES('5b31fbf8-f9af-4be4-bc62-87df28cf66c3', 'Botella de vino', NULL, 'Botella de vino', 25000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
+VALUES('5b31fbf8-f9af-4be4-bc62-87df28cf66c3', 'Botella de vino', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Botella de vino', 25000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
 
 --Insert into table item--
 INSERT INTO item
