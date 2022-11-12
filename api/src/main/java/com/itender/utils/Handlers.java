@@ -35,4 +35,15 @@ public class Handlers extends ResponseEntityExceptionHandler {
 
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGeneralException(Exception exception) {
+        log.error(exception.getMessage(), exception);
+        if (exception.getCause() != null) {
+            log.error(exception.getCause().getMessage(), exception.getCause());
+        }
+        return new ResponseEntity<>(
+                new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage()),
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
