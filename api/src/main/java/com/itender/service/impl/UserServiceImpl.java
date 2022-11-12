@@ -1,5 +1,7 @@
 package com.itender.service.impl;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +19,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.itender.api.request.CreateUserRequest;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
 import com.itender.repository.RoleRepository;
@@ -32,13 +36,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ModelMapper mapper;
+    private final Clock clock;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-                           PasswordEncoder passwordEncoder) {
+                           PasswordEncoder passwordEncoder, ModelMapper mapper, Clock clock) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+        this.mapper = mapper;
+        this.clock = clock;
     }
 
     @Override
@@ -61,10 +69,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserApp saveUser(UserApp userApp) {
-        log.info("Saving new userApp {} to the database", userApp.getUsername());
-        userApp.setPassword(passwordEncoder.encode(userApp.getPassword()));
-        return userRepository.save(userApp);
+    public String saveUser(CreateUserRequest request) {
+        log.info("Saving new userApp {} to the database", request.getUsername());
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        UserApp userApp = mapper.map(request, UserApp.class);
+        userApp.setCreatedAt(LocalDateTime.now(clock));
+        userApp.setUpdateAt(LocalDateTime.now(clock));
+
+        return userRepository.save(userApp).getUsername();
     }
 
     @Override

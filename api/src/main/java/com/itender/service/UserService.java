@@ -2,12 +2,13 @@ package com.itender.service;
 
 import java.util.List;
 
+import com.itender.api.request.CreateUserRequest;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
 
 public interface UserService {
 
-    UserApp saveUser(UserApp userApp);
+    String saveUser(CreateUserRequest request);
 
     Role saveRole(Role role);
 

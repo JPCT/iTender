@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.itender.api.request.CreateUserRequest;
 import com.itender.api.request.RoleToUserRequest;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
@@ -60,15 +60,15 @@ public class UserController {
     @Operation(summary = "Create a userApp")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "201", description = "UserApp created."),
+                    @ApiResponse(responseCode = "201", description = "UserApp created.", content = @Content),
                     @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
                     @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
                     )
             }
     )
     @PostMapping("/user/save")
-    public ResponseEntity<UserApp> saveUser(@RequestBody UserApp userApp) {
-        return new ResponseEntity<>(userService.saveUser(userApp), HttpStatus.CREATED);
+    public ResponseEntity<String> saveUser(@RequestBody CreateUserRequest request) {
+        return new ResponseEntity<>(userService.saveUser(request), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Create a role")
