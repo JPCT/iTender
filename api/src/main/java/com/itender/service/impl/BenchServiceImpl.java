@@ -97,9 +97,10 @@ public class BenchServiceImpl implements BenchService {
 
         if (benchOptional.isPresent()) {
             try {
+                log.info("Generating Qr code for bench with id {}", id);
                 return generateQRCodeImage(String.format("%s%s", FRONT_URL_QR, id));
             } catch (WriterException e) {
-                throw new BenchException("Could not generate QR code", HttpStatus.INTERNAL_SERVER_ERROR);
+                throw new BenchException("Could not generate QR code", e);
             }
         } else {
             throw new BenchException(String.format("Bench with id %s not exists.", id), HttpStatus.NOT_FOUND);
