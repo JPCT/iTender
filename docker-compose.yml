@@ -38,6 +38,7 @@ services:
       - JWT_SECRET=rWBYr(P3Ye&7Z!m7
       - springdoc.api-docs.path=/itender-openapi
       - server.servlet.context-path=/api
+      - FRONT_URL_QR=http://localhost:4200/home/
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 

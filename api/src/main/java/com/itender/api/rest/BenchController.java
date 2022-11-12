@@ -105,7 +105,7 @@ public class BenchController {
                     )
             }
     )
-    @PostMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<BufferedImage> getQRCodeFromBenchId(@RequestParam UUID id)
             throws BenchException {
         return new ResponseEntity<>(benchService.getQRCodeFromBenchId(id), HttpStatus.OK);
