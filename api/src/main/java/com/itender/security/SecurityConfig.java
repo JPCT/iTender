@@ -56,6 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
     private final Environment environment;
+    private static final String SUPER_ADMIN_ROLE = "ROLE_SUPER_ADMIN";
+    private static final String COMMERCE_ADMIN_ROLE = "ROLE_COMMERCE_ADMIN";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -69,24 +71,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         customAuthenticationFilter.setFilterProcessesUrl("/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(GET, "/user/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/role/**").hasAnyAuthority("ROLE_SUPER_ADMIN", "ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(PUT, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(DELETE, "/store/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(GET, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(PUT, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(DELETE, "/category/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/bench/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(DELETE, "/bench/**").hasAnyAuthority("ROLE_SUPER_ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/product/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(DELETE, "/product/**").hasAnyAuthority("ROLE_COMMERCE_ADMIN");
-        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all").permitAll();
-        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
+        setSuperAdminAuthorizations(http);
+        setCommerceAdminAuthorizations(http);
+        setDefaultAuthorization(http);
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(environment), UsernamePasswordAuthenticationFilter.class);
+    }
+
+    private void setDefaultAuthorization(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all").permitAll();
+        http.authorizeRequests().antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
+    }
+
+    private void setSuperAdminAuthorizations(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers(GET, "/user/**", "/bench/**").hasAnyAuthority(SUPER_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(POST, "/role/**", "/store/**", "/bench/**").hasAnyAuthority(SUPER_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(PUT, "/store/**").hasAnyAuthority(SUPER_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(DELETE, "/store/**", "/bench/**").hasAnyAuthority(SUPER_ADMIN_ROLE);
+    }
+
+    private void setCommerceAdminAuthorizations(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers(GET, "/user/**", "/category/**", "/product/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(POST, "/role/**", "/category/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(PUT, "/category/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(DELETE, "/category/**", "/product/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
     }
 
     @Bean
