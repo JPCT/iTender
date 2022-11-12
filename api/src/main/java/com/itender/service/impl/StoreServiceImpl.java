@@ -50,6 +50,7 @@ public class StoreServiceImpl implements StoreService {
             Store store = mapper.map(request, Store.class);
             store.setLogoImageId(fileId);
             store.setCreatedAt(LocalDateTime.now(clock));
+            store.setId(null);
             log.info("Creating store {}", store.getName());
 
             storeRepository.save(store);
