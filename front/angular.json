@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
@@ -69,6 +70,9 @@
             },
             "development": {
               "browserTarget": "iTender:build:development"
+            },
+            "options": {
+              "proxyConfig": "proxy.config.js"
             }
           },
           "defaultConfiguration": "development"
@@ -91,10 +95,20 @@
               "src/assets"
             ],
             "styles": [
+              "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
