@@ -1,5 +1,9 @@
 package com.itender.service.impl;
 
+import static com.itender.utils.Constants.CATEGORY_WITH_STORE_ID_NOT_FOUND;
+import static com.itender.utils.Constants.PRODUCT_WITH_CATEGORY_ID_NOT_FOUND;
+import static com.itender.utils.Constants.STORE_NOT_FOUND;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.Clock;
@@ -8,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +20,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.itender.api.request.StoreRequest;
+import com.itender.api.response.CategoryMenuResponse;
 import com.itender.api.response.GetStoreResponse;
+import com.itender.api.response.MenuResponse;
+import com.itender.api.response.ProductMenuResponse;
 import com.itender.exception.FileException;
+import com.itender.exception.ProductCategoryException;
+import com.itender.exception.ProductException;
 import com.itender.exception.StoreException;
+import com.itender.model.Product;
+import com.itender.model.ProductCategory;
 import com.itender.model.Store;
+import com.itender.repository.ProductCategoryRepository;
+import com.itender.repository.ProductRepository;
 import com.itender.repository.StoreRepository;
 import com.itender.service.FileManager;
 import com.itender.service.StoreService;
@@ -30,13 +44,22 @@ import lombok.extern.slf4j.Slf4j;
 public class StoreServiceImpl implements StoreService {
 
     private final StoreRepository storeRepository;
+    private final ProductCategoryRepository productCategoryRepository;
+    private final ProductRepository productRepository;
     private final FileManager fileManager;
     private final ModelMapper mapper;
     private final Clock clock;
 
     @Autowired
-    public StoreServiceImpl(StoreRepository storeRepository, FileManager fileManager, ModelMapper mapper, Clock clock) {
+    public StoreServiceImpl(StoreRepository storeRepository,
+                            ProductCategoryRepository productCategoryRepository,
+                            ProductRepository productRepository,
+                            FileManager fileManager,
+                            ModelMapper mapper,
+                            Clock clock) {
         this.storeRepository = storeRepository;
+        this.productCategoryRepository = productCategoryRepository;
+        this.productRepository = productRepository;
         this.fileManager = fileManager;
         this.mapper = mapper;
         this.clock = clock;
@@ -109,6 +132,66 @@ public class StoreServiceImpl implements StoreService {
         } else {
             throw new StoreException("Any store was found.", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @Override
+    public MenuResponse getMenuFromStore(UUID id)
+            throws StoreException, ProductCategoryException, GeneralSecurityException, IOException {
+        Optional<Store> optionalStore = storeRepository.findById(id);
+
+        if (optionalStore.isPresent()) {
+            List<CategoryMenuResponse> categoryMenuResponses = new ArrayList<>();
+            List<ProductCategory> productCategoryList = productCategoryRepository.getProductCategoriesByStoreId(id);
+
+            if (!productCategoryList.isEmpty()) {
+                productCategoryList.forEach(productCategory -> {
+                    List<ProductMenuResponse> productMenuList = getProductsByCategory(productCategory.getId());
+                    categoryMenuResponses.add(CategoryMenuResponse.builder()
+                            .categoryName(productCategory.getCategoryName())
+                            .id(productCategory.getId())
+                            .productList(productMenuList)
+                            .build());
+                });
+
+                return MenuResponse.builder()
+                        .id(optionalStore.get().getId())
+                        .name(optionalStore.get().getName())
+                        .description(optionalStore.get().getDescription())
+                        .logoUrl(fileManager.getUrl(optionalStore.get().getLogoImageId()))
+                        .categoryList(categoryMenuResponses)
+                        .build();
+            } else {
+                throw new ProductCategoryException(
+                        String.format(CATEGORY_WITH_STORE_ID_NOT_FOUND, id),
+                        HttpStatus.NOT_FOUND);
+            }
+        } else {
+            throw new StoreException(String.format(STORE_NOT_FOUND, id), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    private List<ProductMenuResponse> getProductsByCategory(UUID id) throws ProductException {
+        List<Product> productList = productRepository.findProductsByProductCategoryId(id);
+
+        if (!productList.isEmpty()) {
+            return productList.stream().map(product -> {
+                try {
+                    return ProductMenuResponse.builder()
+                            .id(product.getId())
+                            .name(product.getName())
+                            .price(product.getPrice())
+                            .description(product.getDescription())
+                            .imageUrl(fileManager.getUrl(product.getImageId()))
+                            .build();
+                } catch (GeneralSecurityException | IOException | FileException e) {
+                    throw new FileException(e.getMessage(), e);
+                }
+            }).collect(Collectors.toList());
+        } else {
+            throw new ProductException(String.format(PRODUCT_WITH_CATEGORY_ID_NOT_FOUND, id),
+                    HttpStatus.NOT_FOUND);
+        }
+
     }
 
 }
