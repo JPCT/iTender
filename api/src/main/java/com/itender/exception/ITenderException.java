@@ -2,7 +2,7 @@ package com.itender.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class ITenderException extends Exception{
+public class ITenderException extends RuntimeException{
 
     private HttpStatus errorCode;
 

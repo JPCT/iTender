@@ -19,11 +19,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itender.api.request.StoreRequest;
 import com.itender.api.response.GetStoreResponse;
+import com.itender.api.response.MenuResponse;
 import com.itender.exception.FileException;
+import com.itender.exception.MenuException;
+import com.itender.exception.ProductCategoryException;
+import com.itender.exception.ProductException;
 import com.itender.exception.StoreException;
 import com.itender.service.StoreService;
 
@@ -112,6 +117,24 @@ public class StoreController {
     public ResponseEntity<List<GetStoreResponse>> getAllStores()
             throws FileException, GeneralSecurityException, IOException, StoreException {
         return new ResponseEntity<>(storeService.getAllStores(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Get menu from store")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Menu retrieved."),
+                    @ApiResponse(responseCode = "400", description = "Error in input data.", content = @Content),
+                    @ApiResponse(responseCode = "403", description = "Access denied.", content = @Content),
+                    @ApiResponse(responseCode = "404", description = "Menu from store not found.", content = @Content),
+                    @ApiResponse(responseCode = "500", description = "Internal error.", content = @Content
+                    )
+            }
+    )
+    @GetMapping("/menu")
+    public ResponseEntity<MenuResponse> getMenuFromStore(@RequestParam UUID id)
+            throws MenuException, ProductCategoryException, StoreException, FileException, GeneralSecurityException,
+            IOException, ProductException {
+        return new ResponseEntity<>(storeService.getMenuFromStore(id), HttpStatus.OK);
     }
 
 }
