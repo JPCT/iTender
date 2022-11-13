@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+<<<<<<< Updated upstream
 import { CoreModule } from '@core/core.module';
 import { ThemeModule } from '@theme/theme.module';
 import { SharedModule } from '@shared/shared.module';
@@ -25,11 +26,16 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+=======
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+<<<<<<< Updated upstream
     HttpClientModule,
     CoreModule,
     ThemeModule,
@@ -46,6 +52,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       },
     }),
     BrowserAnimationsModule,
+=======
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatToolbarModule,
+>>>>>>> Stashed changes
   ],
   providers: [
     { provide: BASE_URL, useValue: environment.baseUrl },
