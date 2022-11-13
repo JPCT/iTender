@@ -26,7 +26,6 @@ import com.itender.api.request.StoreRequest;
 import com.itender.api.response.GetStoreResponse;
 import com.itender.api.response.MenuResponse;
 import com.itender.exception.FileException;
-import com.itender.exception.MenuException;
 import com.itender.exception.ProductCategoryException;
 import com.itender.exception.ProductException;
 import com.itender.exception.StoreException;
@@ -132,7 +131,7 @@ public class StoreController {
     )
     @GetMapping("/menu")
     public ResponseEntity<MenuResponse> getMenuFromStore(@RequestParam UUID id)
-            throws MenuException, ProductCategoryException, StoreException, FileException, GeneralSecurityException,
+            throws ProductCategoryException, StoreException, FileException, GeneralSecurityException,
             IOException, ProductException {
         return new ResponseEntity<>(storeService.getMenuFromStore(id), HttpStatus.OK);
     }
