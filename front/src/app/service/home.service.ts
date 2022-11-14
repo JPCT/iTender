@@ -1,21 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//const API_URL_HOME =`${environment.apiUrl}/home`;
+const API_URL =`${environment.apiUrl}`;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HomeService {
 
   constructor(private http: HttpClient) { }
 
   getElements(){
-    return this.http.get<any>("localhost:8080",
-      {
-        headers: new HttpHeaders({
-        "content-type":"application/json"
-        })
-      });
+    return this.http.get<any>(API_URL+"/store/all");
   }
 }
