@@ -11,7 +11,7 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getElements(){
-    return this.http.get<any>("localhost:8080",
+    return this.http.get<any>("localhost:8080/api/store/all",
       {
         headers: new HttpHeaders({
         "content-type":"application/json"
