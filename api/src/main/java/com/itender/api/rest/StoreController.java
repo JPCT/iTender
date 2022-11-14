@@ -129,8 +129,8 @@ public class StoreController {
                     )
             }
     )
-    @GetMapping("/menu")
-    public ResponseEntity<MenuResponse> getMenuFromStore(@RequestParam UUID id)
+    @GetMapping("/menu/{id}")
+    public ResponseEntity<MenuResponse> getMenuFromStore(@PathVariable UUID id)
             throws ProductCategoryException, StoreException, FileException, GeneralSecurityException,
             IOException, ProductException {
         return new ResponseEntity<>(storeService.getMenuFromStore(id), HttpStatus.OK);

@@ -83,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private void setDefaultAuthorization(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all", "/store/menu").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all", "/store/menu/**").permitAll();
         http.authorizeRequests()
                 .antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html",
                         "/swagger-ui/**").permitAll();

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HomeService } from '../../service/home.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   breakpoint: number=0;
   list: any=[];
   datas: string[]=["hola", "como", "estas", "hoy", "soy", "data", "para", "imprimir"];
-  constructor(private service: HomeService) { }
+  constructor(private service: HomeService, private router: Router) { }
 
   getList(){
     this.service.getElements().subscribe(
@@ -28,5 +29,8 @@ export class HomeComponent implements OnInit {
     this.breakpoint = (event.target.innerWidth <= 500) ? 1 : 6;
   }
 
+  redirect(id: string) {
+    this.router.navigate(['menu/'+id]);
+  }
 
 }
