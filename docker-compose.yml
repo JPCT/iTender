@@ -39,6 +39,9 @@ services:
       - springdoc.api-docs.path=/itender-openapi
       - server.servlet.context-path=/api
       - FRONT_URL_QR=http://localhost:4200/home/
+      - spring.servlet.multipart.max-file-size=10MB
+      - spring.servlet.multipart.max-request-size=10MB
+      - spring.sql.init.data-locations=classpath:init.sql
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
