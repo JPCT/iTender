@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { MenuComponent } from './menu.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'
 
 
@@ -11,14 +10,13 @@ import {MatGridListModule} from '@angular/material/grid-list'
 
 @NgModule({
   declarations: [
-    HomeComponent
+    MenuComponent
   ],
   imports: [
     CommonModule,
     MatGridListModule,
     MatToolbarModule,
-    MatCardModule,
-    MatButtonModule
+    MatCardModule
   ],
 })
-export class HomeModule { }
+export class MenuModule { }
