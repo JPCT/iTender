@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'
 
 
@@ -17,9 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
     CommonModule,
     MatGridListModule,
     MatToolbarModule,
-    MatCardModule,
-    MatButtonModule    
-
+    MatCardModule
   ],
 })
 export class MenuModule { }

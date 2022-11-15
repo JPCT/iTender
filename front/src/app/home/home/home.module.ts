@@ -18,8 +18,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatGridListModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule    
-
+    MatButtonModule
   ],
 })
 export class HomeModule { }

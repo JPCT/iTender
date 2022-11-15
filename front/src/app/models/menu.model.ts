@@ -1,22 +1,21 @@
-export class MenuModel {
-    id?: String;
-    name?: String;
-    description?: String;
-    logoUrl?: String;
-    categoryList?: Array<CategoryModel>
+export interface Root {
+    id: string
+    name: string
+    description: string
+    logoUrl: string
+    categoryList: CategoryList[]
+  }
   
-   }
-
-class CategoryModel {
-    id?: String
-    categoryName?: String
-    productList?: Array<ProductModel>
-}
-
-class ProductModel {
-    id?: String
-    name?: String
-    price?: Number
-    description?: String
-    imageUrl?: String
-}
+  export interface CategoryList {
+    id: string
+    categoryName: string
+    productList: ProductList[]
+  }
+  
+  export interface ProductList {
+    id: string
+    name: string
+    price: number
+    description: string
+    imageUrl: string
+  }

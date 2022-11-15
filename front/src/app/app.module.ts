@@ -12,6 +12,7 @@ import { HomeService } from './service/home.service';
 import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule, 
     HttpClientModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   exports:[
     MatToolbarModule
