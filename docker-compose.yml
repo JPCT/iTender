@@ -52,6 +52,8 @@ services:
       dockerfile: ./Dockerfile
     ports: 
       - "4200:80"
+    environment:
+      - apiUrl=http://localhost:8080/api
 
 volumes:
   postgresql-data:
