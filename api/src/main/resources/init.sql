@@ -124,6 +124,9 @@ VALUES('b8509e0c-e272-4310-9705-1b3ccc987b23', 'Helado con brownie', '1fbzrVI5ja
 INSERT INTO product
 (id, description, image_id, "name", price, product_category_id, store_id)
 VALUES('5b31fbf8-f9af-4be4-bc62-87df28cf66c3', 'Botella de vino', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Botella de vino', 25000, 'f0b080e4-4787-4bb1-bab1-ea16cd5f2ac4', '7b35ce7c-b72c-4107-88e0-4c31870afeea');
+INSERT INTO product
+(id, description, image_id, "name", price, product_category_id, store_id)
+VALUES('d92b31f6-6484-11ed-81ce-0242ac120002', 'Hamburguesa', '1fbzrVI5jaX_nPWVljTjoAONhR0UvcDkp', 'Hamburguesa', 35000, 'f08f8488-6ad0-409d-a31e-aef5c2570c8f', '003c18c1-1f67-4dd1-a053-9568075ff90a');
 
 --Insert into table item--
 INSERT INTO item

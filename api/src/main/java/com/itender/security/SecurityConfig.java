@@ -31,6 +31,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -80,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private void setDefaultAuthorization(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all", "/store/menu").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/product/**", "/store/all", "/store/menu/**").permitAll();
         http.authorizeRequests()
                 .antMatchers("/login/**", "/token/refresh/**", "/itender-openapi/**", "/swagger-ui.html",
                         "/swagger-ui/**").permitAll();
@@ -152,4 +155,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         }
     }
 
+    @Bean
+    CorsConfigurationSource corsConfigurationSource()
+    {
+        CorsConfiguration configuration = new CorsConfiguration();
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 }

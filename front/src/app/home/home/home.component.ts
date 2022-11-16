@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/app/service/home.service';
+import { Router } from '@angular/router';
+import { HomeService } from '../../service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,42 +9,28 @@ import { HomeService } from 'src/app/service/home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  data = [{
-    id: 1,
-    name:"cafe",
-    description:"cafesss",
-    logoUrl:"https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e_400x400.jpg"
-},
-{
-    id: 2,
-    name:"cafe 2",
-    description:"cafesss 2",
-    logoUrl:"https://www.boredpanda.com/blog/wp-content/uploads/2017/12/funny-weird-wtf-stock-photos-19-5a3926af95d9d__700.jpg"
-},
-{
-    id: 3,
-    name:"cafe 3",
-    description:"cafesss 3",
-    logoUrl:"https://iso.500px.com/wp-content/uploads/2015/03/business_cover.jpeg"
-}]
+  data: any = [];
   breakpoint: number=0;
   list: any=[];
   datas: string[]=["hola", "como", "estas", "hoy", "soy", "data", "para", "imprimir"];
-  constructor(/*private service: HomeService*/) { }
+  constructor(private service: HomeService, private router: Router) { }
 
-  /*getList(){
+  getList(){
     this.service.getElements().subscribe(
-      data=>{this.list= this.data;}
-      
-      )
-  }*/
+      store => this.data = store);
+      console.log(this.data)
+  }
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 500) ? 1 : 6;
+    this.getList();
   }
-  
+
   onResize(event: any) {
     this.breakpoint = (event.target.innerWidth <= 500) ? 1 : 6;
   }
 
+  redirect(id: string) {
+    this.router.navigate(['menu/'+id]);
+  }
 
 }

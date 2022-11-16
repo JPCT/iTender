@@ -7,22 +7,30 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home/home.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeService } from './service/home.service';
+import { MenuService } from './service/menu.service';
+import { MenuComponent } from './menu/menu.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, MenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
-  
-    MatToolbarModule, 
+    HttpClientModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports:[
     MatToolbarModule
   ],
-  providers: [],
+  providers: [HomeService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
