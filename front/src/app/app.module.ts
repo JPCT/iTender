@@ -13,10 +13,22 @@ import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './service/login.service';
+import { FormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent
+    AppComponent, MenuComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,12 +37,24 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
+    MatRadioModule,
   ],
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService],
+  providers: [HomeService, MenuService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
