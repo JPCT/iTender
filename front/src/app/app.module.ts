@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeService } from './service/home.service';
 import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
+import { RegisterService } from './service/register.service'
+import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { MatRadioModule } from '@angular/material/radio';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService],
+  providers: [HomeService, MenuService, LoginService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
