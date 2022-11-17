@@ -45,6 +45,7 @@ import com.itender.filter.CustomAuthenticationFilter;
 import com.itender.filter.CustomAuthorizationFilter;
 import com.itender.model.Role;
 import com.itender.model.UserApp;
+import com.itender.repository.UserRepository;
 import com.itender.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -60,6 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
     private final UserService userService;
     private final Environment environment;
+    private final UserRepository userRepository;
     private static final String SUPER_ADMIN_ROLE = "ROLE_SUPER_ADMIN";
     private static final String COMMERCE_ADMIN_ROLE = "ROLE_COMMERCE_ADMIN";
 
@@ -71,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(
-                authenticationManagerBean(), environment);
+                authenticationManagerBean(), environment, userRepository);
         customAuthenticationFilter.setFilterProcessesUrl("/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
