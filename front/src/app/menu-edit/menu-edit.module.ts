@@ -4,7 +4,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list'
 import { MenuEditComponent } from './menu-edit.component';
-
+import {MatIconModule} from '@angular/material/icon'
 
 
 
@@ -16,7 +16,8 @@ import { MenuEditComponent } from './menu-edit.component';
     CommonModule,
     MatGridListModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
 })
 export class MenuEditModule { }
