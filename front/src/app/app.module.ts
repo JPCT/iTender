@@ -24,11 +24,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MenuEditService } from './service/menu-edit.service';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent
+    AppComponent, MenuComponent, LoginComponent, MenuEditComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { MatRadioModule } from '@angular/material/radio';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService],
+  providers: [HomeService, MenuService, LoginService, MenuEditService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
