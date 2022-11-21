@@ -61,20 +61,7 @@ public class FileManagerImpl implements FileManager {
     public String getUrl(String id) throws GeneralSecurityException, IOException, FileException {
         log.info("Retrieving file URL with id {}", id);
         if (id != null) {
-            try {
-                File file = googleDriveManager.getInstance().files().get(id)
-                        .setFields("thumbnailLink")
-                        .execute();
-
-                if (file != null) {
-                    return String.format("https://drive.google.com/uc?export=view&id=%s", id);
-                }
-            } catch (GoogleJsonResponseException e) {
-                if (HttpStatus.NOT_FOUND.value() == e.getStatusCode()) {
-                    log.error("File with id {} not found in Drive.", id);
-                    throw new FileException("File not found.");
-                }
-            }
+            return String.format("https://drive.google.com/uc?export=view&id=%s", id);
         }
 
         log.error("File with id {} not found in Drive.", id);
