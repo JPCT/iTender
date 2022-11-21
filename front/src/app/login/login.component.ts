@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LoginRequest, LoginResponse } from '../models/login.model';
-import { Root } from '../models/menu.model';
 import { LoginService } from '../service/login.service';
 import jwt_decode from 'jwt-decode';
 

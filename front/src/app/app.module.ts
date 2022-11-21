@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeService } from './service/home.service';
 import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
+import { RegisterService } from './service/register.service'
+import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
@@ -30,7 +32,7 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent, MenuEditComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, MenuEditService],
+  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

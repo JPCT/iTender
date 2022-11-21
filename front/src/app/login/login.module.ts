@@ -19,4 +19,4 @@ import { LoginComponent } from './login.component';
     MatCardModule
   ],
 })
-export class MenuModule { }
+export class LoginModule { }
