@@ -12,6 +12,11 @@ import { RegisterService } from '../service/register.service';
 })
 export class RegisterComponent implements OnInit {
     gender!: String;
+    firstName!: String;
+    lastName!: String;
+    phoneNumber!: String;
+    username!: String
+    password!: String
     breakpoint: number=0;
     errorMessage: string = '';
     response!: String

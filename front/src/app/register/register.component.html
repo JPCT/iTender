@@ -1,46 +1,41 @@
 <mat-toolbar>
-    <span>Registration</span>
+    <span>Registro</span>
  </mat-toolbar>
  <mat-card class="my-card">
     <mat-card-content>
         <form class="my-form">
             <mat-form-field class="full-width">
-                    <mat-label>First Name</mat-label>
-                    <input  matInput  placeholder="First name"  name="fname"  required>
+                    <mat-label>Nombre</mat-label>
+                    <input  matInput  placeholder="Nombre" [(ngModel)]="firstName" name="fname"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
-                    <mat-label>Last Name</mat-label>
-                    <input  matInput  placeholder="Last Name" name="lname"  required>
+                    <mat-label>Apellidos</mat-label>
+                    <input  matInput  placeholder="Apellidos" [(ngModel)]="lastName" name="lname"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
-                    <mat-label>Address</mat-label>
-                    <input  matInput  placeholder="Address" name="address"  required>
+                    <mat-label>Celular</mat-label>
+                    <input  matInput  placeholder="Celular" [(ngModel)]="phoneNumber" name="phoneNumber"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
-                    <mat-label>Email</mat-label>
-                    <input  matInput  placeholder="Email" name="email">
+                    <mat-label>Correo</mat-label>
+                    <input  matInput  placeholder="Correo" [(ngModel)]="username" name="username">
                 </mat-form-field>
                 <mat-form-field class="full-width">
-                    <mat-label>Password</mat-label>
-                    <input  matInput  placeholder="Password"  name="password">
+                    <mat-label>Contraseña</mat-label>
+                    <input  matInput  placeholder="Contraseña" [(ngModel)]="password" name="password">
                 </mat-form-field>
                 <section class="example-section">
-                    <label class="example-margin">Gender:</label>
+                    <label class="example-margin">Genero: </label>
                     <mat-radio-group [(ngModel)]="gender">
-                        <mat-radio-button class="example-margin" value="after">Male</mat-radio-button>
-                        <mat-radio-button class="example-margin" value="before">Female</mat-radio-button>
-                        <mat-radio-button class="example-margin" value="before">Other</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="after">Hombre</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="before">Mujer</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="before">Otro</mat-radio-button>
                     </mat-radio-group>
                 </section>
-                <mat-form-field>
-                    <mat-label>Date of Birth</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-         </form>
+            
+        </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="register()" color="primary">REGISTER</button>
+        <button mat-raised-button (click)="register()" color="primary">Registrarse</button>
     </mat-card-actions>
  </mat-card>
