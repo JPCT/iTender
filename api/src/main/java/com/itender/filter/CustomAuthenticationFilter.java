@@ -7,12 +7,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +29,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.itender.model.UserApp;
+import com.itender.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,10 +39,14 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
     private final AuthenticationManager authenticationManager;
     private final Environment environment;
+    private final UserRepository userRepository;
 
-    public CustomAuthenticationFilter(AuthenticationManager authenticationManager, Environment environment) {
+    public CustomAuthenticationFilter(AuthenticationManager authenticationManager,
+                                      Environment environment,
+                                      UserRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.environment = environment;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -71,8 +79,20 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         }
 
         User user = (User) authentication.getPrincipal();
+
+        Optional<UserApp> optionalUserApp = userRepository.findByUsername(user.getUsername());
+        Map<String, Object> map = new HashMap<>();
+        if (optionalUserApp.isPresent()) {
+            if (optionalUserApp.get().getStore() != null) {
+                map.put("storeId", optionalUserApp.get().getStore().getId().toString());
+            } else {
+                map.put("storeId", StringUtils.EMPTY);
+            }
+        }
+
         Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
         String accessToken = JWT.create()
+                .withPayload(map)
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 24 * 3600 * 1000))
                 .withIssuer(request.getRequestURL().toString())

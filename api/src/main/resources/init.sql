@@ -195,7 +195,7 @@ VALUES('74b8c157-0775-4e0d-87a4-325d4c6a3523', '2022-10-22 21:10:28.584', 'ROLE_
 --Insert into table user_app--
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
-VALUES('d3f5f669-4409-4673-b404-5afc294c51fa', '2022-10-20 21:10:28.590', 'John', 'Mejia', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3134554632', 0, '2022-10-20 21:10:28.590', 'john@email.com', NULL);
+VALUES('d3f5f669-4409-4673-b404-5afc294c51fa', '2022-10-20 21:10:28.590', 'John', 'Mejia', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3134554632', 0, '2022-10-20 21:10:28.590', 'john@email.com', '297db8c6-9e70-4a50-803f-9a55ad4c483a');
 INSERT INTO user_app
 (id, created_at, first_name, last_name, "password", phone_number, sex, update_at, username, store_id)
 VALUES('c2aa163a-2fc2-4c82-aa02-d33d59fb30a5', '2022-10-19 23:41:14.350', 'Lucas', 'Bohorquez', '$2a$10$1XHzBVlygXeBYIkUeVaMDuExr555nsIgZG5HOpR3jM0P.7IZZFyIu', '3016120490', 0, '2022-10-20 23:41:14.350', 'lucas@email.com', NULL);
