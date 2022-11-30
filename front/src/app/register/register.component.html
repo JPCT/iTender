@@ -6,27 +6,27 @@
         <form class="my-form">
             <mat-form-field class="full-width">
                     <mat-label>Nombre</mat-label>
-                    <input  matInput  placeholder="Nombre" [(ngModel)]="firstName" name="fname"  required>
+                    <input  matInput  placeholder="Nombre" [(ngModel)]="request.firstName" name="fname"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
                     <mat-label>Apellidos</mat-label>
-                    <input  matInput  placeholder="Apellidos" [(ngModel)]="lastName" name="lname"  required>
+                    <input  matInput  placeholder="Apellidos" [(ngModel)]="request.lastName" name="lname"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
                     <mat-label>Celular</mat-label>
-                    <input  matInput  placeholder="Celular" [(ngModel)]="phoneNumber" name="phoneNumber"  required>
+                    <input  matInput  placeholder="Celular" [(ngModel)]="request.phoneNumber" name="phoneNumber"  required>
                 </mat-form-field>
                 <mat-form-field class="full-width">
                     <mat-label>Correo</mat-label>
-                    <input  matInput  placeholder="Correo" [(ngModel)]="username" name="username">
+                    <input  matInput  placeholder="Correo" [(ngModel)]="request.username" name="username">
                 </mat-form-field>
                 <mat-form-field class="full-width">
                     <mat-label>Contraseña</mat-label>
-                    <input  matInput  placeholder="Contraseña" [(ngModel)]="password" name="password">
+                    <input  matInput  placeholder="Contraseña" [(ngModel)]="request.password" name="password">
                 </mat-form-field>
                 <section class="example-section">
                     <label class="example-margin">Genero: </label>
-                    <mat-radio-group [(ngModel)]="gender">
+                    <mat-radio-group [(ngModel)]="request.sex" name="gender">
                         <mat-radio-button class="example-margin" value="after">Hombre</mat-radio-button>
                         <mat-radio-button class="example-margin" value="before">Mujer</mat-radio-button>
                         <mat-radio-button class="example-margin" value="before">Otro</mat-radio-button>
