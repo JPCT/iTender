@@ -26,16 +26,20 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MenuEditService } from './service/menu-edit.service';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './service/jwtinterceptor.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent, RegisterComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
@@ -56,7 +60,7 @@ import { MatRadioModule } from '@angular/material/radio';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, RegisterService],
+  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
