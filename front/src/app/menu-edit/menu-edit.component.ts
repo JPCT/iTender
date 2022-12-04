@@ -20,10 +20,8 @@ export class MenuEditComponent implements OnInit {
   getMenu(){
     this.service.getElements(this.storeId).subscribe(
       res => {
-        console.log(res);
         this.data = res;
       });
-      console.log(this.data);
   }
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 500) ? 1 : 6;
@@ -44,6 +42,14 @@ export class MenuEditComponent implements OnInit {
 
   redirect() {
     this.router.navigate(['home/']);
+  }
+
+  delete(id: string) {
+    this.service.deleteProduct(id).subscribe(response => {
+      if (response.status === 204) {
+        this.ngOnInit();
+      }
+    });
   }
 
 }

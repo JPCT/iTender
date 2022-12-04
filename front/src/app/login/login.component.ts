@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
 
   getDecodedAccessToken(token: string): any {
     try {
+      localStorage.setItem('token', token);
       return jwt_decode(token);
     } catch(Error) {
       return null;

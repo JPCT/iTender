@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Root } from '../models/menu.model';
 const API_URL =`${environment.apiUrl}`;
@@ -11,7 +11,12 @@ export class MenuEditService {
   constructor(private http: HttpClient) { }
 
   getElements(id: string): Observable<Root>{
-    console.log(id);
     return this.http.get<Root>(API_URL+"/store/menu/"+id);
+  }
+
+  deleteProduct(id: string): Observable<HttpResponse<boolean>>{
+    return this.http.delete<boolean>(API_URL+"/product/"+id, {
+      observe: 'response'
+    });
   }
 }

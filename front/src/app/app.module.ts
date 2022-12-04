@@ -26,6 +26,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MenuEditService } from './service/menu-edit.service';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './service/jwtinterceptor.service';
 
 
 @NgModule({
@@ -56,7 +58,7 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, MenuEditService],
+  providers: [HomeService, MenuService, LoginService, MenuEditService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
