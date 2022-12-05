@@ -52,4 +52,8 @@ export class MenuEditComponent implements OnInit {
     });
   }
 
+  create(id: string) {
+    this.router.navigate(['product/create/'+this.storeId+'/'+id]);
+  }
+
 }
