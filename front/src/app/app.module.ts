@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeService } from './service/home.service';
 import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
+import { RegisterService } from './service/register.service'
+import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
@@ -34,12 +36,12 @@ import { ProductCreateComponent } from './product/product-create/product-create.
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent, MenuEditComponent, ProductCreateComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent, ProductCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
@@ -60,7 +62,7 @@ import { ProductCreateComponent } from './product/product-create/product-create.
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, MenuEditService, ProductService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
+  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService, ProductService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
