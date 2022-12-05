@@ -98,7 +98,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private void setCommerceAdminAuthorizations(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(GET, "/user/**", "/category/**", "/product/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
-        http.authorizeRequests().antMatchers(POST, "/role/**", "/category/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
+        http.authorizeRequests().antMatchers(POST, "/role/**", "/category/**", "/product/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
         http.authorizeRequests().antMatchers(PUT, "/category/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
         http.authorizeRequests().antMatchers(DELETE, "/category/**", "/product/**").hasAnyAuthority(COMMERCE_ADMIN_ROLE);
     }

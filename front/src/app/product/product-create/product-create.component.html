@@ -1,0 +1,46 @@
+<link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+      <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+<mat-toolbar>
+  <span>Crear Producto</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+      <form class="my-form">
+          <mat-form-field class="full-width">
+                  <mat-label>Nombre</mat-label>
+                  <input  matInput  placeholder="Nombre" [(ngModel)]="request.name" name="name"  required>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <mat-label>Precio</mat-label>
+                  <input  matInput  placeholder="Precio" [(ngModel)]="request.price" name="price" min="1" required>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                  <mat-label>Descripción</mat-label>
+                  <input  matInput  placeholder="Descripción" [(ngModel)]="request.description" name="description"  required>
+              </mat-form-field>
+              <input type="file" class="file-input"
+                    (change)="onFileSelected($event)" accept="image/*" #fileUpload>
+
+              <div class="file-upload">
+
+                {{fileName || "Ninguna imagen cargada."}}
+
+                  <button mat-mini-fab color="primary" class="upload-btn"
+                    (click)="fileUpload.click()">
+                      <mat-icon>attach_file</mat-icon>
+                  </button>
+              </div>
+      </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button (click)="create()" color="primary">Crear</button>
+      <button mat-raised-button (click)="redirect()">Volver</button>
+  </mat-card-actions>
+</mat-card>
+

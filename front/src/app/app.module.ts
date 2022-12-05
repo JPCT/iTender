@@ -28,11 +28,13 @@ import { MenuEditService } from './service/menu-edit.service';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './service/jwtinterceptor.service';
+import { ProductService } from './service/product.service';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent, MenuEditComponent
+    AppComponent, MenuComponent, LoginComponent, MenuEditComponent, ProductCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { JwtInterceptor } from './service/jwtinterceptor.service';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, MenuEditService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
+  providers: [HomeService, MenuService, LoginService, MenuEditService, ProductService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

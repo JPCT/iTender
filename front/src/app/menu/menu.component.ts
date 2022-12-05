@@ -20,10 +20,8 @@ export class MenuComponent implements OnInit {
   getMenu(){
     this.service.getElements(this.storeId).subscribe(
       res => {
-        console.log(res);
         this.data = res;
       });
-      console.log(this.data);
   }
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 500) ? 1 : 6;
