@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeService } from './service/home.service';
 import { MenuService } from './service/menu.service';
 import { MenuComponent } from './menu/menu.component';
+import { RegisterService } from './service/register.service'
+import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './login/login.component';
@@ -24,16 +26,20 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { MenuEditService } from './service/menu-edit.service';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './service/jwtinterceptor.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
@@ -54,7 +60,7 @@ import { MatRadioModule } from '@angular/material/radio';
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService],
+  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

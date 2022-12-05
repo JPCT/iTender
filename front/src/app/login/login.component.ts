@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LoginRequest, LoginResponse } from '../models/login.model';
-import { Root } from '../models/menu.model';
 import { LoginService } from '../service/login.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +34,12 @@ export class LoginComponent implements OnInit {
       next: data => {
         console.log(data);
         this.response = data;
-        this.redirect();
+        var storeId = this.getStoreId(data.access_token);
+        if (storeId){
+          this.redirect(storeId);
+        } else {
+          this.redirectHome();
+        }
       },
       error: error => {
           this.errorMessage = 'Credenciales inválidas.';
@@ -59,8 +64,27 @@ export class LoginComponent implements OnInit {
     this.doLogin();
   }
 
-  redirect() {
-    this.router.navigate(['home/']);
+  getDecodedAccessToken(token: string): any {
+    try {
+      localStorage.setItem('token', token);
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
+
+  redirect(storeId: string) {
+    this.router.navigate(['menu/edit/'+storeId]);
+  }
+
+  redirectHome() {
+    this.router.navigate(['home']);
+  }
+
+  getStoreId(token: string) {
+    const tokenInfo = this.getDecodedAccessToken(token); // decode token
+    const storeId = tokenInfo.storeId;
+    return storeId;
   }
 
 }
