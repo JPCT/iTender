@@ -11,15 +11,9 @@ import { RegisterService } from '../service/register.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-    gender!: String;
-    firstName!: String;
-    lastName!: String;
-    phoneNumber!: String;
-    username!: String
-    password!: String
     breakpoint: number=0;
     errorMessage: string = '';
-    response!: String
+    response!: string;
     request: CreateUserRequest = {
         firstName: '',
         lastName: '',
@@ -32,19 +26,19 @@ export class RegisterComponent implements OnInit {
     constructor(private service: RegisterService, private router: Router) { }
   
     doRegister(){
-      
+      console.log(this.request);
       this.service.register(this.request).subscribe({
         next: data => {
-          console.log(data);
           this.response = data;
-          this.redirect();
         },
         error: error => {
-            this.errorMessage = 'No se pudo registrar el usuario.';
-            console.log('There was an error!', error);
+            console.log( 'No se pudo registrar el usuario.', error);
+        },
+        complete: () => {
+          this.redirect();
         }
       })
-      console.log(this.response);
+      
     }
     ngOnInit() {
       this.breakpoint = (window.innerWidth <= 500) ? 1 : 6;

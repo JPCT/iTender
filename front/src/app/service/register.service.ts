@@ -7,10 +7,9 @@ const API_URL =`${environment.apiUrl}`;
 
 @Injectable()
 export class RegisterService {
-
   constructor(private http: HttpClient) { }
 
-  register(request: CreateUserRequest): Observable<String>{
-    return this.http.post<String>(API_URL+"/user/save", JSON.stringify(request));
+  register(request: CreateUserRequest): Observable<string>{
+    return this.http.post(API_URL+"/user/save", JSON.stringify(request), {responseType: 'text'});
   }
 }
