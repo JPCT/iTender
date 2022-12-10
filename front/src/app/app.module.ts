@@ -32,11 +32,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './service/jwtinterceptor.service';
 import { ProductService } from './service/product.service';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { CategoryCreateComponent } from './category/category-create.component';
+import { CategoryService } from './service/category.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent, ProductCreateComponent
+    AppComponent, MenuComponent, LoginComponent, RegisterComponent, MenuEditComponent, ProductCreateComponent, CategoryCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,7 @@ import { ProductCreateComponent } from './product/product-create/product-create.
   exports:[
     MatToolbarModule
   ],
-  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService, ProductService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
+  providers: [HomeService, MenuService, LoginService, RegisterService, MenuEditService, ProductService, CategoryService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

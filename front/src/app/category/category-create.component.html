@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <span>Crear Categoría</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+      <form class="my-form">
+          <mat-form-field class="full-width">
+                  <mat-label>Nombre</mat-label>
+                  <input  matInput  placeholder="Nombre" [(ngModel)]="request.categoryName" name="categoryName"  required>
+              </mat-form-field>
+      </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button (click)="create()" color="primary">Crear</button>
+      <button mat-raised-button (click)="redirect()">Volver</button>
+  </mat-card-actions>
+</mat-card>
+
