@@ -52,6 +52,14 @@ export class MenuEditComponent implements OnInit {
     });
   }
 
+  deleteCategory(id: string) {
+    this.service.deleteCategory(id).subscribe(response => {
+      if (response.status === 204) {
+        this.ngOnInit();
+      }
+    });
+  }
+
   create(id: string) {
     this.router.navigate(['product/create/'+this.storeId+'/'+id]);
   }
