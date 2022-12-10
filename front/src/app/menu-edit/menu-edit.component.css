@@ -32,3 +32,8 @@
 .mat-card-title {
   width: 130px;
 }
+
+.mat-icon-delete {
+  width: 50px;
+  margin-left: 10px;
+}

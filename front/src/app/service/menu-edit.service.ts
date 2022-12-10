@@ -19,4 +19,10 @@ export class MenuEditService {
       observe: 'response'
     });
   }
+
+  deleteCategory(id: string): Observable<HttpResponse<boolean>>{
+    return this.http.delete<boolean>(API_URL+"/category/product/"+id, {
+      observe: 'response'
+    });
+  }
 }
