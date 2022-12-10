@@ -9,6 +9,14 @@ export class JwtInterceptor implements HttpInterceptor {
         let token = localStorage.getItem('token')
         
         if (token != null) {
+            if (request.method === 'POST' && request.url.indexOf('/api/product') >= 0){
+                const authReq = request.clone({
+                    headers: request.headers.set('Authorization', 'Bearer '+token)
+    
+                });
+
+                return next.handle(authReq);
+            }
             const authReq = request.clone({
                 headers: request.headers.set('Authorization', 'Bearer '+token)
                                         .set('Content-Type', 'application/json')
