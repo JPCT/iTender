@@ -30,6 +30,12 @@
             </mat-card>
           </mat-card-content>
       </mat-card>
+      <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-subtitle>Crear categoría</mat-card-subtitle>
+          <mat-icon style="color: rgb(38, 80, 219)" (click)="createCategory(data.id)">add_box</mat-icon>
+        </mat-card-title-group>
+      </mat-card>
     </div>
     
     <button mat-raised-button (click)="redirect()">Volver</button>

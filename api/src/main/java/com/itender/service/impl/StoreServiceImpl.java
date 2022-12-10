@@ -8,6 +8,7 @@ import java.security.GeneralSecurityException;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -191,8 +192,7 @@ public class StoreServiceImpl implements StoreService {
                 }
             }).collect(Collectors.toList());
         } else {
-            throw new ProductException(String.format(PRODUCT_WITH_CATEGORY_ID_NOT_FOUND, id),
-                    HttpStatus.NOT_FOUND);
+            return Collections.emptyList();
         }
 
     }

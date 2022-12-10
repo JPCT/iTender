@@ -64,4 +64,8 @@ export class MenuEditComponent implements OnInit {
     this.router.navigate(['product/create/'+this.storeId+'/'+id]);
   }
 
+  createCategory(id: string) {
+    this.router.navigate(['category/create/'+this.storeId]);
+  }
+
 }
