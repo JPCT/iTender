@@ -6,6 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { CategoryCreateComponent } from './category/category-create.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'product/create/:storeId/:categoryId',
     component: ProductCreateComponent
+  },
+  {
+    path: 'category/create/:storeId',
+    component: CategoryCreateComponent
   }
 ];
 
