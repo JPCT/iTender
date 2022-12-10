@@ -1,6 +1,5 @@
 package com.itender.service.impl;
 
-import static com.itender.utils.Constants.CATEGORY_WITH_STORE_ID_NOT_FOUND;
 import static com.itender.utils.Constants.PRODUCT_WITH_CATEGORY_ID_NOT_FOUND;
 import static com.itender.utils.Constants.STORE_NOT_FOUND;
 
@@ -161,9 +160,13 @@ public class StoreServiceImpl implements StoreService {
                         .categoryList(categoryMenuResponses)
                         .build();
             } else {
-                throw new ProductCategoryException(
-                        String.format(CATEGORY_WITH_STORE_ID_NOT_FOUND, id),
-                        HttpStatus.NOT_FOUND);
+                log.info("No category product found for this store {}", optionalStore.get().getName());
+                return MenuResponse.builder()
+                        .id(optionalStore.get().getId())
+                        .name(optionalStore.get().getName())
+                        .description(optionalStore.get().getDescription())
+                        .logoUrl(fileManager.getUrl(optionalStore.get().getLogoImageId()))
+                        .build();
             }
         } else {
             throw new StoreException(String.format(STORE_NOT_FOUND, id), HttpStatus.NOT_FOUND);
