@@ -11,7 +11,6 @@ export class MenuService {
   constructor(private http: HttpClient) { }
 
   getElements(id: string): Observable<Root>{
-    console.log(id);
     return this.http.get<Root>(API_URL+"/store/menu/"+id);
   }
 }

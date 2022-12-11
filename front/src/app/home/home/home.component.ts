@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../../service/home.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,33 @@ export class HomeComponent implements OnInit {
   }
 
   redirect(id: string) {
-    this.router.navigate(['menu/'+id]);
+    let token = localStorage.getItem('token')
+    
+    if(token != null) {
+      let storeId = this.getStoreId(token);
+      if (id === storeId) {
+        this.router.navigate(['menu/edit/'+storeId]);
+      }else {
+        this.router.navigate(['menu/'+id]);
+      }
+    }else{
+      this.router.navigate(['menu/'+id]);
+    }
+    
   }
 
+  getStoreId(token: string) {
+    const tokenInfo = this.getDecodedAccessToken(token); // decode token
+    const storeId = tokenInfo.storeId;
+    return storeId;
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      localStorage.setItem('token', token);
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
 }
