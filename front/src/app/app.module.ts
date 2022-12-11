@@ -59,7 +59,7 @@ import { CategoryService } from './service/category.service';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatRadioModule,
+    MatRadioModule
   ],
   exports:[
     MatToolbarModule
