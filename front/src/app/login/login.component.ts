@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { LoginRequest, LoginResponse } from '../models/login.model';
 import { LoginService } from '../service/login.service';
 import jwt_decode from 'jwt-decode';
+import { AppComponent } from '../app.component';
+import { HtmlParser } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
   response!: LoginResponse;
   private routeSub: Subscription = new Subscription;
-  constructor(private service: LoginService, private router: Router) { }
+  constructor(private service: LoginService, private router: Router, private appComponent: AppComponent) { }
 
   doLogin(){
     this.request.username = this.username;
@@ -32,9 +34,9 @@ export class LoginComponent implements OnInit {
 
     this.service.login(this.request).subscribe({
       next: data => {
-        console.log(data);
         this.response = data;
         var storeId = this.getStoreId(data.access_token);
+        document.getElementById("login-button")!.style.visibility = "hidden";
         if (storeId){
           this.redirect(storeId);
         } else {
@@ -46,7 +48,6 @@ export class LoginComponent implements OnInit {
           console.log('There was an error!', error);
       }
     })
-    console.log(this.response);
   }
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 500) ? 1 : 6;
