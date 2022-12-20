@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-toolbar>
+    <span>LOGIN</span>
+    <br>
+  </mat-toolbar>
+  <mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form">
+           <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input  matInput  placeholder="Email" name="email" [(ngModel)]="username">
+           </mat-form-field>
+           <mat-form-field class="full-width">
+              <mat-label>Contraseña</mat-label>
+              <input  matInput  placeholder="Contraseña" type="password" name="password" [(ngModel)]="password">
+           </mat-form-field>
+        </form>
+        <span style="color:#FF0000"style="color:#FF0000">{{errorMessage}}</span>
+     </mat-card-content>
+     <mat-card-actions>
+        <button mat-raised-button (click)="login()" color="primary">LOGIN</button>
+     </mat-card-actions>
+  </mat-card>
+</div>
+

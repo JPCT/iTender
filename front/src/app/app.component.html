@@ -1,0 +1,9 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title>iTender App</mat-card-title>
+          <button id="login-button" *ngIf="logged" mat-raised-button color="primary" (click)="redirect()">LOGIN</button>
+        </mat-card-title-group>
+    </mat-card>
+</div>
+<router-outlet></router-outlet>

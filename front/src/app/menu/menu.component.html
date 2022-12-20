@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title *ngIf="data?.name">{{data.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="data?.description">{{data.description}}</mat-card-subtitle>
+          <img mat-card-sm-image *ngIf="data?.logoUrl" src="{{data.logoUrl}}" >
+        </mat-card-title-group>
+    </mat-card>
+    <div *ngIf="data?.categoryList">
+      <mat-card class="example-card" *ngFor="let item of data.categoryList">
+        <mat-card-title-group>
+          <mat-card-title>{{item.categoryName}}</mat-card-title>
+        </mat-card-title-group>
+          <mat-card-content>
+            <br>
+            <mat-card class="example-card" *ngFor="let item2 of item.productList">
+              <mat-card-title-group>
+                <mat-card-title>{{item2.name}}</mat-card-title>
+                <mat-card-subtitle>${{item2.price}}</mat-card-subtitle>
+                <img mat-card-sm-image src="{{item2.imageUrl}}" >
+              </mat-card-title-group>
+                <mat-card-content>
+                  {{item2.description}}
+                </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <button mat-raised-button (click)="redirect()">Volver</button>
+</div>
+

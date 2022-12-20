@@ -1,0 +1,39 @@
+
+.container {
+    margin: auto;
+    margin-top: 5%;
+}
+.card.mat-card{
+
+  margin: auto;  
+    
+}
+.mat-grid-tile-content{
+    margin: auto;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.mat-raised-button {
+  margin-bottom: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.img-mat-card {
+  margin-left: 5%;
+}
+
+.mat-card-title {
+  width: 130px;
+}
+
+.mat-icon-delete {
+  width: 50px;
+  margin-left: 10px;
+}
